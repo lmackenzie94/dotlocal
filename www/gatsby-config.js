@@ -1,5 +1,7 @@
 require("dotenv").config()
 
+const isProd = process.env.NODE_ENV === "production"
+
 module.exports = {
   siteMetadata: {
     title: `dot local`,
@@ -15,8 +17,8 @@ module.exports = {
         projectId: process.env.PROJECT_ID,
         dataset: process.env.DATASET,
         token: process.env.SANITY_TOKEN,
-        overlayDrafts: true,
-        watchMode: true,
+        overlayDrafts: !isProd,
+        watchMode: !isProd,
       },
     },
     {
