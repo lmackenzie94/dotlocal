@@ -57,14 +57,18 @@ function PriceRating({
   }
 
   let dollarSigns = [...Array(maxDollarSigns).keys()].map(n => (
-    <span
+    <button
       key={n + 1}
       data-value={n + 1}
       sx={{
+        appearance: `none`,
+        outline: `none`,
+        background: `none`,
+        border: `none`,
+        p: 0,
         mx: `3px`,
         width: 10,
-        display: `inline-block`,
-        fontSize: [2, 2, 3],
+        fontSize: [3],
         color: `greyLight`,
       }}
       onMouseOver={handleHover}
@@ -72,7 +76,7 @@ function PriceRating({
       onClick={handleClick}
     >
       &#36;
-    </span>
+    </button>
   ))
 
   return (

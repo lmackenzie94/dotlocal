@@ -6,6 +6,7 @@ export const colors = {
   blue: "#00AB97",
   grey: "#999",
   greyLight: "#c7c7c7",
+  red: "#cc0000",
 }
 
 const theme = {
@@ -75,6 +76,13 @@ const theme = {
       backgroundColor: "primary",
       mb: [4, 4, 5],
       py: [3],
+    },
+    footer: {
+      color: "white",
+      backgroundColor: "blueDark",
+      py: [2],
+      mt: [4, 4, 5],
+      textAlign: "center",
     },
   },
 }

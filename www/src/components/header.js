@@ -3,11 +3,18 @@ import { jsx } from "theme-ui"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import { Wrapper } from "../system"
-import { MenuButton } from "theme-ui"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faInstagram } from "@fortawesome/free-brands-svg-icons"
 
 const Header = ({ siteTitle }) => (
   <header sx={{ variant: "layout.header" }}>
-    <Wrapper sx={{ display: `flex`, justifyContent: `space-between` }}>
+    <Wrapper
+      sx={{
+        display: `flex`,
+        justifyContent: `space-between`,
+        alignItems: `center`,
+      }}
+    >
       <h1 sx={{ variant: `styles.h1`, m: 0, textTransform: `uppercase` }}>
         <Link
           to="/"
@@ -22,7 +29,23 @@ const Header = ({ siteTitle }) => (
           </span>
         </Link>
       </h1>
-      <MenuButton aria-label="Toggle Menu" sx={{ transform: `scale(1.4)` }} />
+      <a
+        href="https://www.instagram.com/dotlocaltoronto/"
+        target="_blank"
+        rel="noopener noreferrer"
+        sx={{ textDecoration: `none`, display: `inline-block` }}
+      >
+        <FontAwesomeIcon
+          icon={faInstagram}
+          tabIndex={0}
+          sx={{
+            mx: `8px`,
+            color: `white`,
+            fontSize: [4, 4, 5],
+            "&:hover, &:focus": { color: `blue` },
+          }}
+        />
+      </a>
     </Wrapper>
   </header>
 )

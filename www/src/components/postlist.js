@@ -4,16 +4,32 @@ import { jsx } from "theme-ui"
 import Post from "./post"
 import PriceRating from "./priceRating"
 
-function PostList({ posts }) {
+function PostList({ postData }) {
+  const posts = postData.posts.edges
+  const categories = postData.categories.edges
+
   const [priceRating, setPriceRating] = useState(null)
+  const [categoryFilter, setCategoryFilter] = useState(null)
 
   const filteredPosts = posts.filter(({ node: post }) => {
-    if (priceRating) {
+    if (priceRating && categoryFilter) {
+      return post.price === priceRating && post.category.name === categoryFilter
+    } else if (priceRating && !categoryFilter) {
       return post.price === priceRating
+    } else if (categoryFilter && !priceRating) {
+      return post.category.name === categoryFilter
     } else {
       return post
     }
   })
+
+  const handleChange = e => {
+    if (e.target.value === "All") {
+      setCategoryFilter(null)
+    } else {
+      setCategoryFilter(e.target.value)
+    }
+  }
 
   return (
     <>
@@ -32,10 +48,14 @@ function PostList({ posts }) {
             pb: `2px`,
             pr: [3],
           }}
+          onChange={handleChange}
         >
           <option defaultValue="All">All</option>
-          <option value="Food">Food</option>
-          <option value="Fashion">Fashion</option>
+          {categories.map(({ node: category }) => (
+            <option key={category.name} value={category.name}>
+              {category.name}
+            </option>
+          ))}
         </select>
         <PriceRating
           maxDollarSigns={4}

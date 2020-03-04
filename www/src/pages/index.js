@@ -5,14 +5,14 @@ import SEO from "../components/seo"
 import PostList from "../components/postlist"
 import { graphql } from "gatsby"
 import { Wrapper, Section } from "../system"
-import wave from "../images/wave.svg"
+// import wave from "../images/wave.svg"
 
 export const query = graphql`
   {
     posts: allSanityPost {
       edges {
         node {
-          _id
+          id
           title
           slug {
             current
@@ -21,6 +21,9 @@ export const query = graphql`
             name
           }
           price
+          category {
+            name
+          }
           mainImage {
             alt
             asset {
@@ -29,6 +32,13 @@ export const query = graphql`
               }
             }
           }
+        }
+      }
+    }
+    categories: allSanityCategory {
+      edges {
+        node {
+          name
         }
       }
     }
@@ -62,7 +72,7 @@ const IndexPage = ({ data }) => {
       </Section>
       <Section>
         <Wrapper>
-          <PostList posts={data.posts.edges} />
+          <PostList postData={data} />
         </Wrapper>
       </Section>
       {/* <Section sx={{ minHeight: `50vh`, bg: `primary` }}></Section> */}
