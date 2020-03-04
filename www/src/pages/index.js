@@ -2,7 +2,7 @@
 import { jsx } from "theme-ui"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import PostList from "../components/PostList"
+import PostList from "../components/postlist"
 import { graphql } from "gatsby"
 import { Wrapper, Section } from "../system"
 import wave from "../images/wave.svg"
