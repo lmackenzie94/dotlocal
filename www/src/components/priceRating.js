@@ -67,7 +67,7 @@ function PriceRating({
         border: `none`,
         p: 0,
         mx: `3px`,
-        width: 10,
+        width: 11,
         fontSize: [3],
         color: `greyLight`,
       }}
