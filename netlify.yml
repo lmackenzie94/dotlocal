@@ -1,4 +1,4 @@
 build:
   base: www/
-  publish: www/public/
+  publish: public/
   command: yarn build
