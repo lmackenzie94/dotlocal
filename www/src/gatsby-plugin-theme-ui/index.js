@@ -1,9 +1,11 @@
-const colors = {
+export const colors = {
   black: "#000",
   white: "#fff",
   green: "#bada55",
   blueDark: "#000033",
   blue: "#00AB97",
+  grey: "#999",
+  greyLight: "#c7c7c7",
 }
 
 const theme = {
@@ -51,18 +53,18 @@ const theme = {
     },
     h1: {
       variant: "text.heading",
-      fontSize: 5,
+      fontSize: [4, 4, 5],
       m: 0,
     },
     h2: {
       variant: "text.heading",
-      fontSize: 4,
+      fontSize: [3, 3, 4],
       m: 0,
       mb: [2, 3, 4],
     },
     h3: {
       variant: "text.heading",
-      fontSize: 3,
+      fontSize: [2, 2, 3],
       m: 0,
       mb: [1, 2, 3],
     },
@@ -71,7 +73,7 @@ const theme = {
     header: {
       color: "white",
       backgroundColor: "primary",
-      mb: [2, 3, 4],
+      mb: [4, 4, 5],
       py: [3],
     },
   },

@@ -5,7 +5,7 @@ async function createPostPages(graphql, actions) {
       posts: allSanityPost {
         edges {
           node {
-            _id
+            id
             title
             slug {
               current

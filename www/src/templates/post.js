@@ -4,28 +4,31 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { graphql } from "gatsby"
 import { Section, Wrapper } from "../system"
+import Image from "gatsby-image"
 
-// export const query = graphql`
-//   {
-//     posts: allSanityPost {
-//       edges {
-//         node {
-//           _id
-//           title
-//           slug {
-//             current
-//           }
-//           author {
-//             name
-//           }
-//           categories {
-//             title
-//           }
-//         }
-//       }
-//     }
-//   }
-// `
+export const query = graphql`
+  query PostPageTemplateQuery($id: String!) {
+    post: sanityPost(id: { eq: $id }) {
+      id
+      title
+      slug {
+        current
+      }
+      author {
+        name
+      }
+      price
+      mainImage {
+        alt
+        asset {
+          fluid {
+            ...GatsbySanityImageFluid
+          }
+        }
+      }
+    }
+  }
+`
 
 const PostPageTemplate = ({ data }) => {
   return (
@@ -33,7 +36,24 @@ const PostPageTemplate = ({ data }) => {
       <SEO title="Posts" />
       <Section>
         <Wrapper>
-          <h1>Post!</h1>
+          <h1>{data.post.title}</h1>
+          <div
+            sx={{
+              display: `flex`,
+              flexDirection: [`column-reverse`, `column-reverse`, `row`],
+              "& > *": { flex: `1 0 50%` },
+            }}
+          >
+            <div>
+              <h3>This place is super dope!</h3>
+            </div>
+            <Image
+              fluid={data.post.mainImage.asset.fluid}
+              alt={data.post.mainImage.alt}
+              sx={{ width: `100%`, "&:img": { width: `100%` } }}
+            />
+          </div>
+          <div></div>
         </Wrapper>
       </Section>
     </Layout>

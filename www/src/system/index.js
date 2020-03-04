@@ -18,7 +18,7 @@ export const Section = props => (
     as={`section`}
     {...props}
     sx={{
-      mb: [3, 4, 5],
+      mb: [5],
       ...props.sx,
     }}
   />

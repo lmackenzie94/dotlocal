@@ -4,6 +4,11 @@ import { Link } from "gatsby"
 import Image from "gatsby-image"
 
 function Post({ post }) {
+  let dollarSigns = ""
+  for (let i = 0; i < post.price; i++) {
+    dollarSigns += "$"
+  }
+
   return (
     <Link
       to={`/posts/${post.slug.current}`}
@@ -39,7 +44,7 @@ function Post({ post }) {
             borderRadius: 4,
           }}
         >
-          {post.price}
+          {dollarSigns}
         </p>
       </div>
       <p sx={{ m: 0 }}>421 Spadina Avenue</p>

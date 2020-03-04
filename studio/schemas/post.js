@@ -39,15 +39,19 @@ export default {
         list: [
           {
             title: '$',
-            value: '$'
+            value: '1'
           },
           {
             title: '$$',
-            value: '$$'
+            value: '2'
           },
           {
             title: '$$$',
-            value: '$$$'
+            value: '3'
+          },
+          {
+            title: '$$$$',
+            value: '4'
           }
         ]
       }

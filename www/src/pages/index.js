@@ -65,7 +65,7 @@ const IndexPage = ({ data }) => {
           <PostList posts={data.posts.edges} />
         </Wrapper>
       </Section>
-      <Section sx={{ minHeight: `50vh`, bg: `primary` }}></Section>
+      {/* <Section sx={{ minHeight: `50vh`, bg: `primary` }}></Section> */}
     </Layout>
   )
 }
