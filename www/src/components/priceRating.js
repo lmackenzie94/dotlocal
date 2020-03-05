@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { useState, useRef, useEffect } from "react"
+import { useRef, useEffect } from "react"
 import { jsx } from "theme-ui"
 import { colors } from "../gatsby-plugin-theme-ui/index"
 
@@ -11,12 +11,11 @@ function PriceRating({
   setPriceRating,
   ...props
 }) {
-  //   const [priceRating, setPriceRating] = useState(null)
   const dollarSignContainer = useRef()
 
   useEffect(() => {
     dollarSignNodes = Array.from(dollarSignContainer.current.childNodes)
-  }, [dollarSignContainer, dollarSignNodes, maxDollarSigns])
+  }, [dollarSignContainer, maxDollarSigns])
 
   const handleHover = e => {
     const hoverValue = e.target.dataset.value

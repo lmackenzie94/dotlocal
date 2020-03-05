@@ -3,6 +3,17 @@ import React, { useState } from "react"
 import { jsx } from "theme-ui"
 import Post from "./post"
 import PriceRating from "./priceRating"
+import { motion as M } from "framer-motion"
+
+const containerVariants = {
+  before: {},
+  after: { transition: { staggerChildren: 0.075, delayChildren: 0.7 } },
+}
+
+const itemVariants = {
+  before: { opacity: 0, scale: 0.75 },
+  after: { opacity: 1, scale: 1 },
+}
 
 function PostList({ postData }) {
   const posts = postData.posts.edges
@@ -64,22 +75,31 @@ function PostList({ postData }) {
           sx={{ display: `inline-block`, ml: [4] }}
         />
       </div>
-      <ul
-        sx={{
-          listStyle: `none`,
-          m: 0,
-          p: 0,
-          display: `grid`,
-          gridTemplateColumns: `repeat(auto-fill, minmax(250px,1fr))`,
-          gridGap: `2rem`,
-        }}
-      >
-        {filteredPosts.map(({ node: post }) => (
-          <li key={post.id}>
-            <Post post={post} />
-          </li>
-        ))}
-      </ul>
+      {filteredPosts.length > 0 ? (
+        <M.ul
+          variants={containerVariants}
+          initial={"before"}
+          animate={"after"}
+          sx={{
+            listStyle: `none`,
+            m: 0,
+            p: 0,
+            display: `grid`,
+            gridTemplateColumns: `repeat(auto-fill, minmax(250px,1fr))`,
+            gridGap: `2rem`,
+          }}
+        >
+          {filteredPosts.map(({ node: post }) => (
+            <M.li key={post.id} variants={itemVariants}>
+              <Post post={post} />
+            </M.li>
+          ))}
+        </M.ul>
+      ) : (
+        <p sx={{ fontSize: [2, 2, 3], fontWeight: `bold` }}>
+          Nothing yet, but check back later because we're adding more every day!
+        </p>
+      )}
     </>
   )
 }
