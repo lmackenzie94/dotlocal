@@ -38,23 +38,9 @@ const Layout = ({ children }) => {
             backgroundColor: "lightgray",
           },
           "body::-webkit-scrollbar-thumb": {
-            backgroundColor: theme.colors.blue,
+            backgroundColor: theme.colors.red,
           },
         })}
-        // * {
-        //   ::-webkit-scrollbar {
-        //     width: 0.75rem;
-        //   }
-
-        //   ::-webkit-scrollbar-track {
-        //     box-shadow: inset 1px 0 0px rgba(0, 0, 0, 0.1);
-        //     background-color: lightgray;
-        //   }
-
-        //   ::-webkit-scrollbar-thumb {
-        //     background-color: #d43737;
-        //   }
-        // }
       />
       <Header siteTitle={data.site.siteMetadata.title} />
       {/* flex: 1 to keep footer at bottom of page */}

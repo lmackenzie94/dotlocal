@@ -21,7 +21,7 @@ function PriceRating({
     const hoverValue = e.target.dataset.value
     dollarSignNodes.forEach(sign => {
       sign.style.color =
-        hoverValue >= sign.dataset.value ? colors.blue : colors.greyLight
+        hoverValue >= sign.dataset.value ? colors.red : colors.greyLight
     })
   }
 
@@ -33,7 +33,7 @@ function PriceRating({
     } else {
       dollarSignNodes.forEach(sign => {
         sign.style.color =
-          priceRating >= sign.dataset.value ? colors.blue : colors.greyLight
+          priceRating >= sign.dataset.value ? colors.red : colors.greyLight
       })
     }
   }
@@ -49,7 +49,7 @@ function PriceRating({
     } else {
       dollarSignNodes.forEach(sign => {
         sign.style.color =
-          rating >= sign.dataset.value ? colors.blue : colors.greyLight
+          rating >= sign.dataset.value ? colors.red : colors.greyLight
       })
       setPriceRating(rating)
     }
@@ -69,6 +69,8 @@ function PriceRating({
         width: 11,
         fontSize: [3],
         color: `greyLight`,
+        transition: `0.3s ease-out`,
+        transitionProperty: `color`,
       }}
       onMouseOver={handleHover}
       onFocus={handleHover}

@@ -41,6 +41,10 @@ const PostPageTemplate = ({ data }) => {
             sx={{
               display: `flex`,
               flexDirection: [`column-reverse`, `column-reverse`, `row`],
+              bg: `white`,
+              p: [3],
+              mx: [-3],
+              borderRadius: 10,
               "& > *": { flex: `1 0 50%` },
             }}
           >
@@ -50,7 +54,12 @@ const PostPageTemplate = ({ data }) => {
             <Image
               fluid={data.post.mainImage.asset.fluid}
               alt={data.post.mainImage.alt}
-              sx={{ width: `100%`, "&:img": { width: `100%` } }}
+              sx={{
+                width: `100%`,
+                borderTopRightRadius: 10,
+                borderBottomRightRadius: 10,
+                "&:img": { width: `100%` },
+              }}
             />
           </div>
           <div></div>

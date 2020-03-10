@@ -46,7 +46,7 @@ export const query = graphql`
 `
 
 const basicVariants = {
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   hidden: { opacity: 0, y: 10 },
 }
 
@@ -72,27 +72,33 @@ const IndexPage = ({ data }) => {
             animate="visible"
             variants={basicVariants}
           >
-            Restaurants <span sx={{ color: `secondary` }}>&</span> Fashion
+            Your guide for food and men’s fashion accessible to you in the
+            Toronto area.
           </M.h2>
           <M.div
             variants={containerVariants}
             initial={"before"}
             animate={"after"}
+            sx={{ bg: `white`, p: [3], mx: [-3], borderRadius: 10 }}
           >
             <M.p variants={itemVariants}>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit
-              nulla inventore commodi repellendus sunt dolorem animi tempore ad
-              optio, nihil temporibus magnam voluptate alias harum!
+              Being a young person in Toronto is expensive and frankly,
+              exhausting. But there's a plethora of culture in this city that
+              you just can't miss out on.
             </M.p>
             <M.p variants={itemVariants}>
-              <strong>OUR PURPOSE:</strong> Lorem ipsum dolor sit amet
-              consectetur adipisicingel∂t. Accusamus earum corporis illum quis
-              aut sapiente.
+              <strong sx={{ color: `red` }}>OUR PURPOSE:</strong> To help you
+              spend your time and money having the time of your life in Toronto.
             </M.p>
             <M.p variants={itemVariants}>
-              <strong>OUR MISSION:</strong> Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Voluptates officiis debitis minus
-              dolorum sequi aspernatur veniam sint ratione similique impedit!
+              <strong sx={{ color: `red` }}>OUR MISSION:</strong> To try and
+              test all the great & not-so-great restaurants, stores, and brands
+              available in Toronto, so you don't have to.
+            </M.p>
+            <M.p variants={itemVariants}>
+              On this page you can expect to find relevant information you need
+              to make informed decisions about how you spend your time & money
+              in this city.
             </M.p>
           </M.div>
         </Wrapper>

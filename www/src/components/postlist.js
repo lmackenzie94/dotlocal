@@ -7,12 +7,17 @@ import { motion as M } from "framer-motion"
 
 const containerVariants = {
   before: {},
-  after: { transition: { staggerChildren: 0.075, delayChildren: 0.7 } },
+  after: { transition: { staggerChildren: 0.075, delayChildren: 0.5 } },
 }
 
 const itemVariants = {
   before: { opacity: 0, scale: 0.75 },
   after: { opacity: 1, scale: 1 },
+}
+
+const basicVariants = {
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.5 } },
+  hidden: { opacity: 0, y: 10 },
 }
 
 function PostList({ postData }) {
@@ -44,8 +49,20 @@ function PostList({ postData }) {
 
   return (
     <>
-      <h2 sx={{ variant: `styles.h2` }}>Our Picks</h2>
-      <div sx={{ mb: [4] }}>
+      <M.h2
+        variants={basicVariants}
+        initial={"hidden"}
+        animate={"visible"}
+        sx={{ variant: `styles.h2` }}
+      >
+        Our Picks
+      </M.h2>
+      <M.div
+        variants={basicVariants}
+        initial={"hidden"}
+        animate={"visible"}
+        sx={{ mb: [4], bg: `white`, borderRadius: 10, p: [3], mx: [-3] }}
+      >
         {/* TODO add label */}
         <select
           sx={{
@@ -54,12 +71,13 @@ function PostList({ postData }) {
             background: `none`,
             outline: `none`,
             borderBottom: `2px solid`,
-            borderColor: `blue`,
+            borderColor: `secondary`,
             borderRadius: 0,
             pb: `2px`,
             pr: [3],
           }}
           onChange={handleChange}
+          aria-label="Select a category"
         >
           <option defaultValue="All">All</option>
           {categories.map(({ node: category }) => (
@@ -74,7 +92,7 @@ function PostList({ postData }) {
           setPriceRating={setPriceRating}
           sx={{ display: `inline-block`, ml: [4] }}
         />
-      </div>
+      </M.div>
       {filteredPosts.length > 0 ? (
         <M.ul
           variants={containerVariants}

@@ -1,3 +1,5 @@
+import bg from "../images/webb.png"
+
 export const colors = {
   black: "#000",
   white: "#fff",
@@ -6,7 +8,7 @@ export const colors = {
   blue: "#00AB97",
   grey: "#999",
   greyLight: "#c7c7c7",
-  red: "#cc0000",
+  red: "#9c000a",
 }
 
 const theme = {
@@ -17,12 +19,11 @@ const theme = {
     text: colors.black,
     background: colors.white,
     primary: colors.blueDark,
-    secondary: colors.blue,
+    secondary: colors.red,
   },
   fonts: {
-    body:
-      'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
-    heading: "Roboto, sans-serif",
+    body: "Open Sans, sans-serif",
+    heading: "Miriam Libre, sans-serif",
     monospace: "Menlo, monospace",
   },
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
@@ -51,6 +52,7 @@ const theme = {
       fontFamily: "body",
       lineHeight: "body",
       fontWeight: "body",
+      background: `url(${bg})`,
     },
     h1: {
       variant: "text.heading",
@@ -61,7 +63,7 @@ const theme = {
       variant: "text.heading",
       fontSize: [3, 3, 4],
       m: 0,
-      mb: [2, 3, 4],
+      mb: [2, 3],
     },
     h3: {
       variant: "text.heading",

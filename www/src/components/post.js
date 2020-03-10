@@ -18,6 +18,7 @@ function Post({ post }) {
         p: [2, 2, 3],
         textDecoration: `none`,
         color: `text`,
+        background: `white`,
         boxShadow: `0 2px 4px rgba(0,0,0,0.12), 0 2px 3px rgba(0,0,0,0.24);`,
         transition: `0.3s cubic-bezier(.25,.8,.25,1)`,
         transitionProperty: `all`,
@@ -31,7 +32,14 @@ function Post({ post }) {
         <Image
           fluid={post.mainImage.asset.fluid}
           alt={post.mainImage.alt}
-          sx={{ height: `140px`, "&:img": { width: `100%` } }}
+          sx={{
+            height: `140px`,
+            "&:img": {
+              width: `100%`,
+              transition: `0.3s ease-out`,
+              transitionProperty: `all`,
+            },
+          }}
         />
         <p
           sx={{
