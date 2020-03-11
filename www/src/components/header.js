@@ -42,7 +42,7 @@ const Header = ({ siteTitle }) => (
             mx: `8px`,
             color: `white`,
             fontSize: [4, 4, 5],
-            "&:hover, &:focus": { color: `blue` },
+            "&:hover, &:focus": { color: `red` },
           }}
         />
       </a>

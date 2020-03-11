@@ -2,8 +2,8 @@
 import React, { useState } from "react"
 import { jsx } from "theme-ui"
 import Post from "./post"
-import PriceRating from "./priceRating"
 import { motion as M } from "framer-motion"
+import PostFilters from "./post-filters"
 
 const containerVariants = {
   before: {},
@@ -26,6 +26,7 @@ function PostList({ postData }) {
 
   const [priceRating, setPriceRating] = useState(null)
   const [categoryFilter, setCategoryFilter] = useState(null)
+  const [sortBy, setSortBy] = useState(null)
 
   const filteredPosts = posts.filter(({ node: post }) => {
     if (priceRating && categoryFilter) {
@@ -38,6 +39,25 @@ function PostList({ postData }) {
       return post
     }
   })
+
+  if (sortBy) {
+    switch (sortBy) {
+      case "highest":
+        filteredPosts.sort(
+          (a, b) => parseInt(b.node.price) - parseInt(a.node.price)
+        )
+        break
+      case "lowest":
+        filteredPosts.sort(
+          (a, b) => parseInt(a.node.price) - parseInt(b.node.price)
+        )
+        break
+      case "newest":
+        break
+      default:
+        break
+    }
+  }
 
   const handleChange = e => {
     if (e.target.value === "All") {
@@ -57,42 +77,13 @@ function PostList({ postData }) {
       >
         Our Picks
       </M.h2>
-      <M.div
-        variants={basicVariants}
-        initial={"hidden"}
-        animate={"visible"}
-        sx={{ mb: [4], bg: `white`, borderRadius: 10, p: [3], mx: [-3] }}
-      >
-        {/* TODO add label */}
-        <select
-          sx={{
-            appearance: `none`,
-            border: `none`,
-            background: `none`,
-            outline: `none`,
-            borderBottom: `2px solid`,
-            borderColor: `secondary`,
-            borderRadius: 0,
-            pb: `2px`,
-            pr: [3],
-          }}
-          onChange={handleChange}
-          aria-label="Select a category"
-        >
-          <option defaultValue="All">All</option>
-          {categories.map(({ node: category }) => (
-            <option key={category.name} value={category.name}>
-              {category.name}
-            </option>
-          ))}
-        </select>
-        <PriceRating
-          maxDollarSigns={4}
-          priceRating={priceRating}
-          setPriceRating={setPriceRating}
-          sx={{ display: `inline-block`, ml: [4] }}
-        />
-      </M.div>
+      <PostFilters
+        categories={categories}
+        handleChange={handleChange}
+        priceRating={priceRating}
+        setPriceRating={setPriceRating}
+        setSortBy={setSortBy}
+      />
       {filteredPosts.length > 0 ? (
         <M.ul
           variants={containerVariants}

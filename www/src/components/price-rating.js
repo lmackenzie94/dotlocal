@@ -69,7 +69,7 @@ function PriceRating({
         width: 11,
         fontSize: [3],
         color: `greyLight`,
-        transition: `0.3s ease-out`,
+        transition: `0.2s ease-out`,
         transitionProperty: `color`,
       }}
       onMouseOver={handleHover}

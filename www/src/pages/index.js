@@ -2,17 +2,18 @@
 import { jsx } from "theme-ui"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import PostList from "../components/postlist"
+import PostList from "../components/post-list"
 import { graphql } from "gatsby"
 import { Wrapper, Section } from "../system"
 import { motion as M } from "framer-motion"
 
 export const query = graphql`
   {
-    posts: allSanityPost {
+    posts: allSanityPost(sort: { order: DESC, fields: _createdAt }) {
       edges {
         node {
           id
+          _createdAt(formatString: "MMMM D, YYYY")
           title
           slug {
             current

@@ -28,6 +28,7 @@ function Post({ post }) {
       }}
     >
       <h3 sx={{ variant: `styles.h3` }}>{post.title}</h3>
+      <p>Posted: {post._createdAt}</p>
       <div sx={{ position: `relative`, mx: [-2, -2, -3], mb: [3] }}>
         <Image
           fluid={post.mainImage.asset.fluid}

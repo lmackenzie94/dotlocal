@@ -87,6 +87,18 @@ const theme = {
       textAlign: "center",
     },
   },
+  buttons: {
+    sort: {
+      background: `none`,
+      outline: `none`,
+      border: `none`,
+      borderRadius: 2,
+      fontSize: [1],
+      color: `white`,
+      py: [1],
+      cursor: `pointer`,
+    },
+  },
 }
 
 export default theme
