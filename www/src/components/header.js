@@ -5,28 +5,30 @@ import PropTypes from "prop-types"
 import { Wrapper } from "../system"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faInstagram } from "@fortawesome/free-brands-svg-icons"
+import Logo from "../icons/logo"
 
 const Header = ({ siteTitle }) => (
   <header sx={{ variant: "layout.header" }}>
     <Wrapper
       sx={{
         display: `flex`,
-        justifyContent: `space-between`,
+        justifyContent: `center`,
         alignItems: `center`,
+        position: `relative`,
       }}
     >
-      <h1 sx={{ variant: `styles.h1`, m: 0, textTransform: `uppercase` }}>
+      <h1 sx={{ variant: `styles.h1` }}>
         <Link
           to="/"
-          style={{
-            color: `white`,
+          sx={{
             textDecoration: `none`,
+            display: `block`,
+            width: 151,
+            height: 154,
           }}
         >
-          {siteTitle}
-          <span sx={{ fontSize: `0.5em`, ml: `5px`, color: `secondary` }}>
-            TORONTO
-          </span>
+          {/* {siteTitle} */}
+          <Logo />
         </Link>
       </h1>
       <a
@@ -39,9 +41,11 @@ const Header = ({ siteTitle }) => (
           icon={faInstagram}
           tabIndex={0}
           sx={{
-            mx: `8px`,
-            color: `white`,
-            fontSize: [4, 4, 5],
+            color: `blueDark`,
+            fontSize: [5, 6],
+            position: `absolute`,
+            top: `40%`,
+            right: [`47px`, 5],
             "&:hover, &:focus": { color: `red` },
           }}
         />

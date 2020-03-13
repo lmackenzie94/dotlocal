@@ -26,7 +26,7 @@ const theme = {
     heading: "Miriam Libre, sans-serif",
     monospace: "Menlo, monospace",
   },
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
+  fontSizes: [12, 14, 16, 18, 20, 24, 32, 48, 64, 72],
   fontWeights: {
     body: 400,
     heading: 700,
@@ -34,7 +34,7 @@ const theme = {
   },
   lineHeights: {
     body: 1.5,
-    heading: 1.125,
+    heading: 1.35,
   },
   text: {
     heading: {
@@ -56,28 +56,30 @@ const theme = {
     },
     h1: {
       variant: "text.heading",
-      fontSize: [4, 4, 5],
       m: 0,
     },
     h2: {
       variant: "text.heading",
-      fontSize: [3, 3, 4],
+      fontSize: [4, 4, 4, 5],
       m: 0,
-      mb: [2, 3],
+      mb: [4, 5],
+      mt: [3],
+      textAlign: `center`,
     },
     h3: {
       variant: "text.heading",
-      fontSize: [2, 2, 3],
+      fontSize: [3, 3, 3, 4],
       m: 0,
-      mb: [1, 2, 3],
+      mb: [1, 2],
     },
   },
   layout: {
     header: {
-      color: "white",
-      backgroundColor: "primary",
+      color: "blueDark",
+      backgroundColor: "white",
       mb: [4, 4, 5],
       py: [3],
+      boxShadow: `0 0 5px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.2);`,
     },
     footer: {
       color: "white",

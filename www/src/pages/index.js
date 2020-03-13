@@ -7,6 +7,7 @@ import { graphql } from "gatsby"
 import { Wrapper, Section } from "../system"
 import { motion as M } from "framer-motion"
 import { useEffect } from "react"
+import Divider from "../components/divider"
 
 export const query = graphql`
   {
@@ -72,7 +73,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" />
-      <Section>
+      <Section sx={{ mb: [0] }}>
         <Wrapper>
           <M.h2
             sx={{ variant: `styles.h2` }}
@@ -87,28 +88,53 @@ const IndexPage = ({ data }) => {
             variants={shouldAnimate ? containerVariants : null}
             initial={"before"}
             animate={"after"}
-            sx={{ bg: `white`, p: [3], mx: [-3], borderRadius: 10 }}
+            sx={{
+              bg: `white`,
+              textAlign: `center`,
+              p: [3],
+              mx: [0, -3],
+              borderRadius: 10,
+            }}
           >
             <M.p variants={shouldAnimate ? itemVariants : null}>
               Being a young person in Toronto is expensive and frankly,
-              exhausting. But there's a plethora of culture in this city that
-              you just can't miss out on.
+              exhausting.
+              <br />
+              But there's a plethora of culture in this city that you just can't
+              miss out on.
             </M.p>
-            <M.p variants={shouldAnimate ? itemVariants : null}>
-              <strong sx={{ color: `red` }}>OUR PURPOSE:</strong> To help you
-              spend your time and money having the time of your life in Toronto.
-            </M.p>
-            <M.p variants={shouldAnimate ? itemVariants : null}>
-              <strong sx={{ color: `red` }}>OUR MISSION:</strong> To try and
-              test all the great & not-so-great restaurants, stores, and brands
-              available in Toronto, so you don't have to.
-            </M.p>
+            <M.div
+              sx={{
+                my: [4],
+                mx: `auto`,
+                px: [1, 2, 3],
+                maxWidth: [`none`, `none`, `95%`],
+                border: `1px dashed`,
+                borderColor: `greyLight`,
+              }}
+              variants={shouldAnimate ? itemVariants : null}
+            >
+              <M.p variants={shouldAnimate ? itemVariants : null}>
+                <strong sx={{ color: `red` }}>OUR PURPOSE</strong>
+                <br />
+                To help you spend your time and money having the time of your
+                life in Toronto.
+              </M.p>
+              <M.p variants={shouldAnimate ? itemVariants : null}>
+                <strong sx={{ color: `red` }}>OUR MISSION</strong>
+                <br />
+                To try and test all the great & not-so-great restaurants,
+                stores, and brands available in Toronto, so you don't have to.
+              </M.p>
+            </M.div>
             <M.p variants={shouldAnimate ? itemVariants : null}>
               On this page you can expect to find relevant information you need
+              <br />
               to make informed decisions about how you spend your time & money
               in this city.
             </M.p>
           </M.div>
+          <Divider />
         </Wrapper>
       </Section>
       <Section>

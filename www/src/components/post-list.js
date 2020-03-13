@@ -88,7 +88,13 @@ function PostList({ postData }) {
         variants={shouldAnimate ? basicVariants : null}
         initial={"hidden"}
         animate={"visible"}
-        sx={{ variant: `styles.h2` }}
+        sx={{
+          variant: `styles.h3`,
+          fontSize: [4, 4, 4, 5],
+          textTransform: `uppercase`,
+          mb: [2, 3],
+          textAlign: `center`,
+        }}
       >
         Our Picks
       </M.h2>

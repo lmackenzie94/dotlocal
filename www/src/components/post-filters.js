@@ -31,9 +31,9 @@ function PostFilters({
         mb: [4],
         bg: `white`,
         borderRadius: 10,
-        px: [3],
-        py: [2],
+        p: [3],
         mx: [-3],
+        textAlign: [`center`, `center`, `center`, `left`],
       }}
     >
       {/* TODO add label */}

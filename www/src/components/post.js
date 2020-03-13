@@ -17,6 +17,7 @@ function Post({ post }) {
         borderRadius: 5,
         p: [2, 2, 3],
         textDecoration: `none`,
+        textAlign: [`center`, `center`, `center`, `left`],
         color: `text`,
         background: `white`,
         boxShadow: `0 2px 4px rgba(0,0,0,0.12), 0 2px 3px rgba(0,0,0,0.24);`,
@@ -28,7 +29,9 @@ function Post({ post }) {
       }}
     >
       <h3 sx={{ variant: `styles.h3` }}>{post.title}</h3>
-      <p>Posted: {post._createdAt}</p>
+      <p sx={{ color: `grey`, mt: 0, fontSize: [0, 0, 1] }}>
+        Posted: {post._createdAt}
+      </p>
       <div sx={{ position: `relative`, mx: [-2, -2, -3], mb: [3] }}>
         <Image
           fluid={post.mainImage.asset.fluid}
