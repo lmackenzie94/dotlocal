@@ -4,10 +4,14 @@ import { jsx } from "theme-ui"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { Global } from "@emotion/core"
+import "@fortawesome/fontawesome-svg-core/styles.css"
+import { config } from "@fortawesome/fontawesome-svg-core"
 import "normalize.css"
-
 import Header from "./header"
 import Footer from "./footer"
+
+// needed to avoid icon flash on page load
+config.autoAddCss = false
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
