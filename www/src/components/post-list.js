@@ -1,23 +1,15 @@
 /** @jsx jsx */
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { jsx } from "theme-ui"
 import Post from "./post"
 import { motion as M } from "framer-motion"
 import PostFilters from "./post-filters"
 
-const containerVariants = {
-  before: {},
-  after: { transition: { staggerChildren: 0.075, delayChildren: 0.5 } },
-}
+let shouldAnimate = true
 
 const itemVariants = {
   before: { opacity: 0, scale: 0.75 },
   after: { opacity: 1, scale: 1 },
-}
-
-const basicVariants = {
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.5 } },
-  hidden: { opacity: 0, y: 10 },
 }
 
 function PostList({ postData }) {
@@ -27,6 +19,29 @@ function PostList({ postData }) {
   const [priceRating, setPriceRating] = useState(null)
   const [categoryFilter, setCategoryFilter] = useState(null)
   const [sortBy, setSortBy] = useState(null)
+
+  useEffect(() => {
+    shouldAnimate = false
+  }, [])
+
+  const containerVariants = {
+    before: {},
+    after: {
+      transition: {
+        staggerChildren: 0.075,
+        delayChildren: shouldAnimate ? 0.5 : 0,
+      },
+    },
+  }
+
+  const basicVariants = {
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, delay: shouldAnimate ? 0.5 : 0 },
+    },
+    hidden: { opacity: 0, y: 10 },
+  }
 
   const filteredPosts = posts.filter(({ node: post }) => {
     if (priceRating && categoryFilter) {
@@ -70,7 +85,7 @@ function PostList({ postData }) {
   return (
     <>
       <M.h2
-        variants={basicVariants}
+        variants={shouldAnimate ? basicVariants : null}
         initial={"hidden"}
         animate={"visible"}
         sx={{ variant: `styles.h2` }}

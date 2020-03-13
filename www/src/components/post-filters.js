@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { jsx } from "theme-ui"
 import Post from "./post"
 import PriceRating from "./price-rating"
@@ -10,6 +10,8 @@ const basicVariants = {
   hidden: { opacity: 0, y: 10 },
 }
 
+let shouldAnimate = true
+
 function PostFilters({
   categories,
   handleChange,
@@ -17,9 +19,12 @@ function PostFilters({
   setPriceRating,
   setSortBy,
 }) {
+  useEffect(() => {
+    shouldAnimate = false
+  }, [])
   return (
     <M.div
-      variants={basicVariants}
+      variants={shouldAnimate ? basicVariants : null}
       initial={"hidden"}
       animate={"visible"}
       sx={{
