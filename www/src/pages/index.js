@@ -73,7 +73,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" />
-      <Section sx={{ mb: [0] }}>
+      <Section sx={{ mb: [0], pt: [`220px`] }}>
         <Wrapper>
           <M.h2
             sx={{ variant: `styles.h2` }}

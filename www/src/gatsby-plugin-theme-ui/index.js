@@ -62,7 +62,7 @@ const theme = {
       variant: "text.heading",
       fontSize: [4, 4, 4, 5],
       m: 0,
-      mb: [4, 5],
+      mb: [4, 4, 5],
       mt: [3],
       textAlign: `center`,
     },
@@ -77,9 +77,12 @@ const theme = {
     header: {
       color: "blueDark",
       backgroundColor: "white",
-      mb: [4, 4, 5],
-      py: [3],
       boxShadow: `0 0 5px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.2);`,
+      position: `fixed`,
+      top: 0,
+      left: 0,
+      width: `100%`,
+      zIndex: 10,
     },
     footer: {
       color: "white",

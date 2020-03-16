@@ -34,7 +34,7 @@ const PostPageTemplate = ({ data }) => {
   return (
     <Layout>
       <SEO title="Posts" />
-      <Section>
+      <Section sx={{ pt: [`220px`] }}>
         <Wrapper>
           <h1>{data.post.title}</h1>
           <div
