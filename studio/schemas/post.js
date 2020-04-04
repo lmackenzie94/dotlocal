@@ -31,11 +31,30 @@ export default {
     },
     {
       name: 'mainImage',
-      title: 'Main image',
+      title: 'Main Image',
       type: 'mainImage',
       options: {
         hotspot: true
       }
+    },
+    {
+      name: 'otherImages',
+      title: 'Other Images',
+      type: 'array',
+      of: [
+        {
+          type: 'mainImage',
+          options: {
+            hotspot: true
+          }
+        }
+      ]
+    },
+    {
+      name: 'location',
+      title: 'Location(s)',
+      type: 'array',
+      of: [{ type: 'string' }]
     },
     {
       name: 'price',

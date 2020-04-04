@@ -64,7 +64,6 @@ const theme = {
       m: 0,
       mb: [4, 4, 5],
       mt: [3],
-      textAlign: `center`,
     },
     h3: {
       variant: "text.heading",

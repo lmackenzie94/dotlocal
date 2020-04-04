@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+:root {
+  /* Brand colors */
+  --brand-primary: #9c000a;
+  --brand-primary--inverted: #ffffff;
+  --brand-secondary: #000033;
+  --brand-tertiary: #9c000a;
+  /* Typography */
+  --font-family-sans-serif: 'Open Sans';
+  --font-family-serif: 'Open Sans';
+  --font-size-base: 15px;
+  --text-color: #000;
+  /* Main Navigation */
+  --main-navigation-color: var(--brand-secondary);
+  --main-navigation-color--inverted: var(--brand-primary--inverted);
+}

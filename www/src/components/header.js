@@ -12,11 +12,9 @@ const Header = ({ siteTitle }) => {
   const [isScrolled, setIsScrolled] = useState(false)
   useEffect(() => {
     const handleScroll = () => {
-      if (window.pageYOffset >= 200 && !isScrolled) {
-        console.log(isScrolled)
+      if (window.pageYOffset >= 150 && !isScrolled) {
         setIsScrolled(true)
-      } else if (window.pageYOffset < 200 && isScrolled) {
-        console.log(isScrolled)
+      } else if (window.pageYOffset < 150 && isScrolled) {
         setIsScrolled(false)
       } else {
         return
@@ -40,6 +38,8 @@ const Header = ({ siteTitle }) => {
         <h1
           sx={{
             variant: `styles.h1`,
+            transitionProperty: `transform`,
+            transition: `0.2s ease-out`,
             transform: `scale(${isScrolled ? 0.75 : 1})`,
           }}
         >
@@ -52,7 +52,6 @@ const Header = ({ siteTitle }) => {
               height: 154,
             }}
           >
-            {/* {siteTitle} */}
             <Logo />
           </Link>
         </h1>
