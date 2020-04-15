@@ -92,6 +92,7 @@ const PostPageTemplate = ({ data }) => {
                 width: `100%`,
                 borderTopRightRadius: 10,
                 borderBottomRightRadius: 10,
+                maxHeight: 400,
                 "&:img": { width: `100%` },
               }}
             />

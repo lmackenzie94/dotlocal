@@ -1,4 +1,4 @@
-import bg from "../images/webb.png"
+import bg from "../images/bg.png"
 
 export const colors = {
   black: "#000",
@@ -53,6 +53,7 @@ const theme = {
       lineHeight: "body",
       fontWeight: "body",
       background: `url(${bg})`,
+      backgroundAttachment: `fixed`,
     },
     h1: {
       variant: "text.heading",
