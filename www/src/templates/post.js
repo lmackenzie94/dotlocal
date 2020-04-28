@@ -6,6 +6,7 @@ import { graphql } from "gatsby"
 import { Section, Wrapper } from "../system"
 import Image from "gatsby-image"
 import BlockContent from "../components/block-content"
+import Slider from "../components/slider"
 
 export const query = graphql`
   query PostPageTemplateQuery($id: String!) {
@@ -19,8 +20,9 @@ export const query = graphql`
         name
       }
       price
-      mainImage {
+      images {
         alt
+        caption
         asset {
           fluid {
             ...GatsbySanityImageFluid
@@ -33,7 +35,7 @@ export const query = graphql`
 `
 
 const PostPageTemplate = ({ data }) => {
-  const { title, author, price, mainImage, _rawBody } = data.post
+  const { title, author, price, images, _rawBody } = data.post
   let dollarSigns = ""
   for (let i = 0; i < price; i++) {
     dollarSigns += "$"
@@ -48,14 +50,14 @@ const PostPageTemplate = ({ data }) => {
             sx={{
               display: `flex`,
               flexDirection: [`column-reverse`, `column-reverse`, `row`],
+              justifyContent: `space-between`,
               bg: `white`,
               p: [3],
               mx: [-3],
               borderRadius: 10,
-              "& > *": { flex: `1 0 50%` },
             }}
           >
-            <div>
+            <div sx={{ flex: `0 0 auto`, mr: [0, 0, 40, 50] }}>
               <h2
                 sx={{
                   fontFamily: `heading`,
@@ -85,17 +87,15 @@ const PostPageTemplate = ({ data }) => {
                 <span sx={{ color: `secondary`, ml: 10 }}>{dollarSigns}</span>
               </h3>
             </div>
-            <Image
-              fluid={mainImage.asset.fluid}
-              alt={mainImage.alt}
+            <div
               sx={{
-                width: `100%`,
                 borderTopRightRadius: 10,
                 borderBottomRightRadius: 10,
-                maxHeight: 400,
-                "&:img": { width: `100%` },
+                flex: `0 1 100%`,
               }}
-            />
+            >
+              <Slider slides={images} />
+            </div>
           </div>
         </Wrapper>
       </Section>

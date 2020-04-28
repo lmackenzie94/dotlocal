@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default {
   name: 'post',
   title: 'Post',
@@ -6,7 +8,7 @@ export default {
     {
       name: 'title',
       title: 'Title',
-      type: 'string'
+      type: 'string',
     },
     {
       name: 'slug',
@@ -14,47 +16,39 @@ export default {
       type: 'slug',
       options: {
         source: 'title',
-        maxLength: 96
-      }
+        maxLength: 96,
+      },
     },
     {
       name: 'category',
       title: 'Category',
       type: 'reference',
-      to: { type: 'category' }
+      to: { type: 'category' },
     },
     {
       name: 'author',
       title: 'Author',
       type: 'reference',
-      to: { type: 'author' }
+      to: { type: 'author' },
     },
     {
-      name: 'mainImage',
-      title: 'Main Image',
-      type: 'mainImage',
-      options: {
-        hotspot: true
-      }
-    },
-    {
-      name: 'otherImages',
-      title: 'Other Images',
+      name: 'images',
+      title: 'Images',
       type: 'array',
       of: [
         {
           type: 'mainImage',
           options: {
-            hotspot: true
-          }
-        }
-      ]
+            hotspot: false,
+          },
+        },
+      ],
     },
     {
       name: 'location',
       title: 'Location(s)',
       type: 'array',
-      of: [{ type: 'string' }]
+      of: [{ type: 'string' }],
     },
     {
       name: 'price',
@@ -64,46 +58,48 @@ export default {
         list: [
           {
             title: '$',
-            value: '1'
+            value: '1',
           },
           {
             title: '$$',
-            value: '2'
+            value: '2',
           },
           {
             title: '$$$',
-            value: '3'
+            value: '3',
           },
           {
             title: '$$$$',
-            value: '4'
-          }
-        ]
-      }
+            value: '4',
+          },
+        ],
+      },
     },
     {
       name: 'publishedAt',
       title: 'Published at',
-      type: 'datetime'
+      type: 'datetime',
     },
     {
       name: 'body',
       title: 'Body',
-      type: 'blockContent'
-    }
+      type: 'blockContent',
+    },
   ],
 
   preview: {
     select: {
       title: 'title',
       author: 'author.name',
-      media: 'mainImage'
+      // media: 'images[0].asset._ref',
     },
     prepare(selection) {
-      const { author } = selection;
-      return Object.assign({}, selection, {
-        subtitle: author && `by ${author}`
-      });
-    }
-  }
+      const { title, author } = selection;
+
+      return {
+        title,
+        subtitle: author && `by ${author}`,
+      };
+    },
+  },
 };

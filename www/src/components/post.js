@@ -9,6 +9,8 @@ function Post({ post }) {
     dollarSigns += "$"
   }
 
+  const mainImage = post.images[0]
+
   return (
     <Link
       to={`/posts/${post.slug.current}`}
@@ -32,33 +34,36 @@ function Post({ post }) {
       <p sx={{ color: `grey`, mt: 0, fontSize: [0, 0, 1] }}>
         Posted: {post._createdAt}
       </p>
-      <div sx={{ position: `relative`, mx: [-2, -2, -3], mb: [3] }}>
-        <Image
-          fluid={post.mainImage.asset.fluid}
-          alt={post.mainImage.alt}
-          sx={{
-            height: `140px`,
-            "&:img": {
-              width: `100%`,
-              transition: `0.3s ease-out`,
-              transitionProperty: `all`,
-            },
-          }}
-        />
-        <p
-          sx={{
-            position: `absolute`,
-            top: `5px`,
-            right: `5px`,
-            m: 0,
-            px: `5px`,
-            bg: `white`,
-            borderRadius: 4,
-          }}
-        >
-          {dollarSigns}
-        </p>
-      </div>
+      {mainImage && (
+        <div sx={{ position: `relative`, mx: [-2, -2, -3], mb: [3] }}>
+          <Image
+            fluid={mainImage.asset.fluid}
+            alt={mainImage.alt}
+            sx={{
+              height: `140px`,
+              "&:img": {
+                width: `100%`,
+                transition: `0.3s ease-out`,
+                transitionProperty: `all`,
+              },
+            }}
+          />
+          <p
+            sx={{
+              position: `absolute`,
+              top: `5px`,
+              right: `5px`,
+              m: 0,
+              px: `5px`,
+              bg: `white`,
+              borderRadius: 4,
+            }}
+          >
+            {dollarSigns}
+          </p>
+        </div>
+      )}
+
       <p sx={{ m: 0 }}>421 Spadina Avenue</p>
     </Link>
   )

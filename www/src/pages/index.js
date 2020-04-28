@@ -27,8 +27,9 @@ export const query = graphql`
           category {
             name
           }
-          mainImage {
+          images {
             alt
+            caption
             asset {
               fluid {
                 ...GatsbySanityImageFluid
