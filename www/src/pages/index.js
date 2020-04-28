@@ -24,6 +24,7 @@ export const query = graphql`
             name
           }
           price
+          locations
           category {
             name
           }
@@ -34,6 +35,10 @@ export const query = graphql`
               fluid {
                 ...GatsbySanityImageFluid
               }
+            }
+            hotspot {
+              x
+              y
             }
           }
         }

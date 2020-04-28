@@ -8,6 +8,7 @@ const SliderContent = ({ children }) => {
 const SliderContentStyles = {
   display: `flex`,
   height: `100%`,
+  position: `relative`,
 }
 
 export default SliderContent

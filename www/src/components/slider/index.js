@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 import SliderContent from "./slider-content"
 import Slide from "./slide"
 import Arrow from "./arrow"
+import Dots from "./dots"
 
 const Slider = ({ slides }) => {
   const [activeIdx, setActiveIdx] = useState(0)
@@ -28,8 +29,7 @@ const Slider = ({ slides }) => {
       setActiveIdx(prevIdx => prevIdx - 1)
     }
   }
-
-  console.log(activeIdx, numOfImages)
+  console.log(activeIdx)
 
   return (
     <div sx={SliderStyles}>
@@ -45,6 +45,7 @@ const Slider = ({ slides }) => {
       </SliderContent>
       <Arrow direction="next" handleClick={nextSlide} />
       <Arrow direction="prev" handleClick={prevSlide} />
+      <Dots activeIdx={activeIdx} setActiveIdx={setActiveIdx} slides={slides} />
     </div>
   )
 }

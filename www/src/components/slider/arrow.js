@@ -23,17 +23,20 @@ const Arrow = ({ direction, handleClick }) => {
         position: `absolute`,
         top: `50%`,
         transform: `translateY(-50%)`,
-        right: direction === "next" ? 25 : null,
-        left: direction === "prev" ? 25 : null,
-        height: 50,
-        width: 50,
+        right: direction === "next" ? [10, 10, 15] : null,
+        left: direction === "prev" ? [10, 10, 15] : null,
+        height: 40,
+        width: 40,
         justifyContent: `center`,
         alignItems: `center`,
         cursor: `pointer`,
         borderRadius: `50%`,
-        background: `rgba(0,0,0,0.75)`,
+        background: `rgba(0,0,0,0.7)`,
         outline: `none`,
         border: `none`,
+        "&:hover, &:focus": {
+          background: `black`,
+        },
       }}
     >
       {ArrowIcon}

@@ -59,7 +59,10 @@ const Header = ({ siteTitle }) => {
           href="https://www.instagram.com/dotlocaltoronto/"
           target="_blank"
           rel="noopener noreferrer"
-          sx={{ textDecoration: `none`, display: `inline-block` }}
+          sx={{
+            textDecoration: `none`,
+            display: `inline-block`,
+          }}
         >
           <FontAwesomeIcon
             icon={faInstagram}
@@ -70,7 +73,7 @@ const Header = ({ siteTitle }) => {
               position: `absolute`,
               top: `40%`,
               right: [`47px`, 5],
-              "&:hover, &:focus": { color: `red` },
+              "&:hover": { color: `red` },
             }}
           />
         </a>

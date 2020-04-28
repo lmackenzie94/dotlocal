@@ -39,13 +39,13 @@ export default {
         {
           type: 'mainImage',
           options: {
-            hotspot: false,
+            hotspot: true,
           },
         },
       ],
     },
     {
-      name: 'location',
+      name: 'locations',
       title: 'Location(s)',
       type: 'array',
       of: [{ type: 'string' }],

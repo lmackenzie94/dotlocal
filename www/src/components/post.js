@@ -10,6 +10,12 @@ function Post({ post }) {
   }
 
   const mainImage = post.images[0]
+  const positionStyles = mainImage.hotspot
+    ? {
+        objectPosition: `${mainImage.hotspot.x * 100}% ${mainImage.hotspot.y *
+          100}%`,
+      }
+    : null
 
   return (
     <Link
@@ -31,9 +37,6 @@ function Post({ post }) {
       }}
     >
       <h3 sx={{ variant: `styles.h3` }}>{post.title}</h3>
-      <p sx={{ color: `grey`, mt: 0, fontSize: [0, 0, 1] }}>
-        Posted: {post._createdAt}
-      </p>
       {mainImage && (
         <div sx={{ position: `relative`, mx: [-2, -2, -3], mb: [3] }}>
           <Image
@@ -47,6 +50,7 @@ function Post({ post }) {
                 transitionProperty: `all`,
               },
             }}
+            imgStyle={positionStyles}
           />
           <p
             sx={{
@@ -63,8 +67,16 @@ function Post({ post }) {
           </p>
         </div>
       )}
-
-      <p sx={{ m: 0 }}>421 Spadina Avenue</p>
+      <p sx={{ color: `grey`, my: 0, fontSize: [0, 0, 1] }}>
+        Posted: {post._createdAt}
+      </p>
+      {/* {post.locations && (
+        <p sx={{ m: 0 }}>
+          {post.locations.map(l => (
+            <span>{l}</span>
+          ))}
+        </p>
+      )} */}
     </Link>
   )
 }

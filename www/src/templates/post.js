@@ -57,7 +57,15 @@ const PostPageTemplate = ({ data }) => {
               borderRadius: 10,
             }}
           >
-            <div sx={{ flex: `0 0 auto`, mr: [0, 0, 40, 50] }}>
+            <div
+              sx={{
+                display: `flex`,
+                flexDirection: `column`,
+                justifyContent: `space-evenly`,
+                flex: `0 0 auto`,
+                mr: [0, 0, 40, 50],
+              }}
+            >
               <h2
                 sx={{
                   fontFamily: `heading`,
@@ -66,6 +74,8 @@ const PostPageTemplate = ({ data }) => {
                   borderColor: `secondary`,
                   width: [`100%`, `100%`, `90%`],
                   textAlign: [`center`, `center`, `left`],
+                  my: 0,
+                  mt: [20, 20, 0],
                 }}
               >
                 {`${author.name}'s Picks:`}
@@ -89,9 +99,11 @@ const PostPageTemplate = ({ data }) => {
             </div>
             <div
               sx={{
+                display: `flex`,
+                flex: `0 1 100%`,
+                alignItems: `center`,
                 borderTopRightRadius: 10,
                 borderBottomRightRadius: 10,
-                flex: `0 1 100%`,
               }}
             >
               <Slider slides={images} />

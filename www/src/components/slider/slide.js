@@ -5,19 +5,20 @@ import Image from "gatsby-image"
 
 const Slide = ({ image, idx, active }) => {
   return (
-    <>
+    <div
+      sx={{
+        flex: `1 0 100%`,
+        transform: active ? `translateX(-${idx * 100}%)` : null,
+        opacity: active ? 1 : 0,
+      }}
+    >
       <Image
         fluid={image.asset.fluid}
         alt={image.alt}
-        sx={{
-          flex: `1 0 100%`,
-          transform: active ? `translateX(-${idx * 100}%)` : null,
-          opacity: active ? 1 : 0,
-          position: `relative`,
-        }}
+        sx={{ height: `100%` }}
         imgStyle={{ objectFit: `contain` }}
       />
-      {image.caption && (
+      {/* {image.caption && (
         <p
           sx={{
             position: `absolute`,
@@ -36,8 +37,8 @@ const Slide = ({ image, idx, active }) => {
         >
           {image.caption}
         </p>
-      )}
-    </>
+      )} */}
+    </div>
   )
 }
 
