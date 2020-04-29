@@ -32,7 +32,8 @@ function PostFilters({
         bg: `blueDark`,
         color: `white`,
         borderRadius: [0, 4],
-        p: [3],
+        py: [3],
+        px: [1, 1, 3],
         mx: [-3],
         display: `flex`,
         justifyContent: [`center`, `center`, `flex-start`],
@@ -66,7 +67,7 @@ function PostFilters({
       <div
         sx={{
           display: [`block`, `block`, `block`, `inline-block`],
-          ml: [3],
+          ml: [2, 3],
         }}
       >
         {/* <p

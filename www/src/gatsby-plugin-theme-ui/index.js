@@ -112,7 +112,9 @@ const theme = {
       fontSize: [3, 3, 4],
       fontWeight: `bold`,
       bg: `white`,
-      py: [1],
+      p: [1],
+      pl: [2],
+
       mx: [2],
     },
   },
