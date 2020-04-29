@@ -9,6 +9,10 @@ import { config } from "@fortawesome/fontawesome-svg-core"
 import "normalize.css"
 import Header from "./header"
 import Footer from "./footer"
+import smoothscroll from "smoothscroll-polyfill"
+
+// kick off the polyfill!
+smoothscroll.polyfill()
 
 // needed to avoid icon flash on page load
 config.autoAddCss = false

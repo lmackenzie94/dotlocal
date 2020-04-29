@@ -22,7 +22,7 @@ function Post({ post }) {
       to={`/posts/${post.slug.current}`}
       sx={{
         display: `block`,
-        borderRadius: 5,
+        borderRadius: 4,
         p: [2, 2, 3],
         textDecoration: `none`,
         textAlign: [`center`, `center`, `center`, `left`],

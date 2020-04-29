@@ -67,7 +67,7 @@ function PriceRating({
         p: 0,
         mx: `3px`,
         width: 11,
-        fontSize: [3],
+        fontSize: [3, 3, 4],
         color: `greyLight`,
         transition: `0.2s ease-out`,
         transitionProperty: `color`,

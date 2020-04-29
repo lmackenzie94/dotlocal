@@ -6,15 +6,14 @@ import PropTypes from "prop-types"
 import { Wrapper } from "../system"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faInstagram } from "@fortawesome/free-brands-svg-icons"
-import Logo from "../icons/logo"
 
 const Header = ({ siteTitle }) => {
   const [isScrolled, setIsScrolled] = useState(false)
   useEffect(() => {
     const handleScroll = () => {
-      if (window.pageYOffset >= 150 && !isScrolled) {
+      if (window.pageYOffset >= 100 && !isScrolled) {
         setIsScrolled(true)
-      } else if (window.pageYOffset < 150 && isScrolled) {
+      } else if (window.pageYOffset < 100 && isScrolled) {
         setIsScrolled(false)
       } else {
         return
@@ -26,11 +25,11 @@ const Header = ({ siteTitle }) => {
   }, [isScrolled])
 
   return (
-    <header sx={{ variant: "layout.header", py: isScrolled ? 0 : [3] }}>
+    <header sx={{ variant: "layout.header", py: isScrolled ? [2] : [3] }}>
       <Wrapper
         sx={{
           display: `flex`,
-          justifyContent: `center`,
+          justifyContent: `space-between`,
           alignItems: `center`,
           position: `relative`,
         }}
@@ -40,7 +39,9 @@ const Header = ({ siteTitle }) => {
             variant: `styles.h1`,
             transitionProperty: `transform`,
             transition: `0.2s ease-out`,
-            transform: `scale(${isScrolled ? 0.75 : 1})`,
+            transform: `scale(${isScrolled ? 0.8 : 1})`,
+            fontSize: [4],
+            lineHeight: 1,
           }}
         >
           <Link
@@ -48,11 +49,10 @@ const Header = ({ siteTitle }) => {
             sx={{
               textDecoration: `none`,
               display: `block`,
-              width: 151,
-              height: 154,
+              color: `blueDark`,
             }}
           >
-            <Logo />
+            dotlocal
           </Link>
         </h1>
         <a
@@ -69,10 +69,7 @@ const Header = ({ siteTitle }) => {
             tabIndex={0}
             sx={{
               color: `blueDark`,
-              fontSize: [5, 6],
-              position: `absolute`,
-              top: `40%`,
-              right: [`47px`, 5],
+              fontSize: [6],
               "&:hover": { color: `red` },
             }}
           />

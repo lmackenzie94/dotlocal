@@ -29,11 +29,14 @@ function PostFilters({
       animate={"visible"}
       sx={{
         mb: [4],
-        bg: `white`,
-        borderRadius: 10,
+        bg: `blueDark`,
+        color: `white`,
+        borderRadius: [0, 4],
         p: [3],
         mx: [-3],
-        textAlign: [`center`, `center`, `center`, `left`],
+        display: `flex`,
+        justifyContent: [`center`, `center`, `flex-start`],
+        alignItems: [`center`],
       }}
     >
       {/* TODO add label */}
@@ -44,8 +47,9 @@ function PostFilters({
           background: `none`,
           outline: `none`,
           borderBottom: `2px solid`,
-          borderColor: `secondary`,
+          borderColor: `white`,
           borderRadius: 0,
+          color: `white`,
           pb: `2px`,
           pr: [3],
         }}
@@ -59,23 +63,13 @@ function PostFilters({
           </option>
         ))}
       </select>
-      <PriceRating
-        maxDollarSigns={4}
-        priceRating={priceRating}
-        setPriceRating={setPriceRating}
-        sx={{ display: `inline-block`, mx: [4] }}
-      />
       <div
         sx={{
           display: [`block`, `block`, `block`, `inline-block`],
-          border: `1px dashed`,
-          borderColor: `greyLight`,
-          mt: [3, 3, 3, 0],
-          p: [2],
-          textAlign: `center`,
+          ml: [3],
         }}
       >
-        <p
+        {/* <p
           sx={{
             display: `inline-block`,
             m: 0,
@@ -84,20 +78,26 @@ function PostFilters({
           }}
         >
           Sort Price:
-        </p>
+        </p> */}
         <button
           onClick={() => setSortBy("highest")}
-          sx={{ variant: `buttons.sort`, bg: `blueDark` }}
+          sx={{ variant: `buttons.sort`, color: `blueDark` }}
         >
-          High to Low
+          $&uarr;
         </button>
         <button
           onClick={() => setSortBy("lowest")}
-          sx={{ variant: `buttons.sort`, bg: `red`, ml: [2, 3] }}
+          sx={{ variant: `buttons.sort`, color: `red` }}
         >
-          Low to High
+          $&darr;
         </button>
       </div>
+      <PriceRating
+        maxDollarSigns={4}
+        priceRating={priceRating}
+        setPriceRating={setPriceRating}
+        sx={{ display: `inline-block`, mx: [3] }}
+      />
     </M.div>
   )
 }

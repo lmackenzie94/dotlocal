@@ -54,7 +54,7 @@ const PostPageTemplate = ({ data }) => {
               bg: `white`,
               p: [3],
               mx: [-3],
-              borderRadius: 10,
+              borderRadius: 4,
             }}
           >
             <div

@@ -11,6 +11,13 @@ export const colors = {
   red: "#9c000a",
 }
 
+const baseButton = {
+  cursor: `pointer`,
+  background: `none`,
+  outline: `none`,
+  border: `none`,
+}
+
 const theme = {
   breakpoints: ["31em", "40em", "52em", "64em"],
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
@@ -62,9 +69,7 @@ const theme = {
     h2: {
       variant: "text.heading",
       fontSize: [4, 4, 4, 5],
-      m: 0,
-      mb: [4, 4, 5],
-      mt: [3],
+      my: [3, 4, 4],
     },
     h3: {
       variant: "text.heading",
@@ -76,7 +81,7 @@ const theme = {
   layout: {
     header: {
       color: "blueDark",
-      backgroundColor: "white",
+      backgroundColor: "rgba(255,255,255,0.95)",
       boxShadow: `0 0 5px rgba(0,0,0,0.08), 0 0 4px rgba(0,0,0,0.2);`,
       position: `fixed`,
       top: 0,
@@ -93,15 +98,22 @@ const theme = {
     },
   },
   buttons: {
+    primary: {
+      ...baseButton,
+      background: `white`,
+      borderRadius: 4,
+      px: [4],
+      py: [2],
+      fontWeight: `bold`,
+    },
     sort: {
-      background: `none`,
-      outline: `none`,
-      border: `none`,
+      ...baseButton,
       borderRadius: 2,
-      fontSize: [1],
-      color: `white`,
+      fontSize: [3, 3, 4],
+      fontWeight: `bold`,
+      bg: `white`,
       py: [1],
-      cursor: `pointer`,
+      mx: [2],
     },
   },
 }

@@ -1,9 +1,10 @@
 /** @jsx jsx */
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { jsx } from "theme-ui"
 import Post from "./post"
 import { motion as M } from "framer-motion"
 import PostFilters from "./post-filters"
+import { Section, Wrapper } from "../system"
 
 let shouldAnimate = true
 
@@ -83,54 +84,59 @@ function PostList({ postData }) {
   }
 
   return (
-    <>
-      <M.h2
-        variants={shouldAnimate ? basicVariants : null}
-        initial={"hidden"}
-        animate={"visible"}
-        sx={{
-          variant: `styles.h3`,
-          fontSize: [4, 4, 4, 5],
-          textTransform: `uppercase`,
-          mb: [2, 3],
-          textAlign: `center`,
-        }}
-      >
-        Our Picks
-      </M.h2>
-      <PostFilters
-        categories={categories}
-        handleChange={handleChange}
-        priceRating={priceRating}
-        setPriceRating={setPriceRating}
-        setSortBy={setSortBy}
-      />
-      {filteredPosts.length > 0 ? (
-        <M.ul
-          variants={containerVariants}
-          initial={"before"}
-          animate={"after"}
+    <Section id="post-list">
+      <Wrapper>
+        <M.h2
+          variants={shouldAnimate ? basicVariants : null}
+          initial={"hidden"}
+          animate={"visible"}
           sx={{
-            listStyle: `none`,
-            m: 0,
-            p: 0,
-            display: `grid`,
-            gridTemplateColumns: `repeat(auto-fill, minmax(250px,1fr))`,
-            gridGap: `2rem`,
+            variant: `styles.h3`,
+            fontSize: [4, 4, 4, 5],
+            textTransform: `uppercase`,
+            mb: [2, 3],
+            textAlign: `center`,
           }}
         >
-          {filteredPosts.map(({ node: post }) => (
-            <M.li key={post.id} variants={itemVariants}>
-              <Post post={post} />
-            </M.li>
-          ))}
-        </M.ul>
-      ) : (
-        <p sx={{ fontSize: [2, 2, 3], fontWeight: `bold` }}>
-          Nothing yet, but check back later because we're adding more every day!
-        </p>
-      )}
-    </>
+          Our Picks
+        </M.h2>
+        <PostFilters
+          categories={categories}
+          handleChange={handleChange}
+          priceRating={priceRating}
+          setPriceRating={setPriceRating}
+          setSortBy={setSortBy}
+        />
+        {filteredPosts.length > 0 ? (
+          <M.ul
+            variants={containerVariants}
+            initial={"before"}
+            animate={"after"}
+            sx={{
+              listStyle: `none`,
+              m: 0,
+              mx: [-3],
+              p: 3,
+              display: `grid`,
+              gridTemplateColumns: `repeat(auto-fill, minmax(250px,1fr))`,
+              gridGap: `2rem`,
+              bg: `white`,
+            }}
+          >
+            {filteredPosts.map(({ node: post }) => (
+              <M.li key={post.id} variants={itemVariants}>
+                <Post post={post} />
+              </M.li>
+            ))}
+          </M.ul>
+        ) : (
+          <p sx={{ fontSize: [2, 2, 3], fontWeight: `bold` }}>
+            Nothing yet, but check back later because we're adding more every
+            day!
+          </p>
+        )}
+      </Wrapper>
+    </Section>
   )
 }
 export default PostList
