@@ -43,7 +43,7 @@ const PostPageTemplate = ({ data }) => {
   return (
     <Layout>
       <SEO title="Posts" />
-      <Section sx={{ pt: [`220px`] }}>
+      <Section sx={{ pt: [`100px`] }}>
         <Wrapper>
           <h1 sx={{ textAlign: [`center`, `center`, `left`] }}>{title}</h1>
           <div
@@ -74,7 +74,6 @@ const PostPageTemplate = ({ data }) => {
                   borderColor: `secondary`,
                   width: [`100%`, `100%`, `90%`],
                   textAlign: [`center`, `center`, `left`],
-                  my: 0,
                   mt: [20, 20, 0],
                 }}
               >
