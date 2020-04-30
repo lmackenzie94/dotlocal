@@ -1,4 +1,5 @@
 import React from 'react';
+import { imageUrlFor } from '../lib/image-url';
 
 export default {
   name: 'post',
@@ -14,6 +15,8 @@ export default {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
+      description:
+        'This will appear in the URL (ex: www.dotlocal.ca/posts/[slug])',
       options: {
         source: 'title',
         maxLength: 96,
@@ -35,6 +38,8 @@ export default {
       name: 'images',
       title: 'Images',
       type: 'array',
+      description:
+        'NOTE: the first image will be used as the preview image on the Home page',
       of: [
         {
           type: 'mainImage',
@@ -76,9 +81,20 @@ export default {
       },
     },
     {
-      name: 'publishedAt',
-      title: 'Published at',
-      type: 'datetime',
+      name: 'approxBill',
+      title: 'Approximate Bill',
+      type: 'string',
+    },
+    // {
+    //   name: 'publishedAt',
+    //   title: 'Published at',
+    //   type: 'datetime',
+    // },
+    {
+      name: 'goodFor',
+      title: 'Good For',
+      type: 'string',
+      description: 'Enter a comma-separated list',
     },
     {
       name: 'body',
@@ -91,14 +107,23 @@ export default {
     select: {
       title: 'title',
       author: 'author.name',
-      // media: 'images[0].asset._ref',
+      images: 'images',
     },
     prepare(selection) {
-      const { title, author } = selection;
-
+      const { title, author, images } = selection;
+      const imageObj = {
+        asset: { _ref: images[0].asset._ref || images[0].asset._id },
+      };
       return {
         title,
         subtitle: author && `by ${author}`,
+        media: (
+          <img
+            src={imageUrlFor(imageObj)}
+            alt={`${title}`}
+            style={{ objectFit: `cover` }}
+          />
+        ),
       };
     },
   },

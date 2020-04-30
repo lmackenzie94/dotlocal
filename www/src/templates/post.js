@@ -20,6 +20,9 @@ export const query = graphql`
         name
       }
       price
+      goodFor
+      approxBill
+      locations
       images {
         alt
         caption
@@ -35,17 +38,42 @@ export const query = graphql`
 `
 
 const PostPageTemplate = ({ data }) => {
-  const { title, author, price, images, _rawBody } = data.post
+  const {
+    title,
+    author,
+    price,
+    images,
+    _rawBody,
+    locations,
+    goodFor,
+    approxBill,
+  } = data.post
   let dollarSigns = ""
   for (let i = 0; i < price; i++) {
     dollarSigns += "$"
   }
   return (
     <Layout>
-      <SEO title="Posts" />
+      <SEO title={title} />
       <Section sx={{ pt: [`100px`] }}>
         <Wrapper>
-          <h1 sx={{ textAlign: [`center`, `center`, `left`] }}>{title}</h1>
+          <h1
+            sx={{
+              textAlign: [`center`, `center`, `left`],
+              mb: [0],
+              display: `inline-block`,
+            }}
+          >
+            {title}
+          </h1>
+          <span sx={{ ml: `10px`, fontSize: [4] }}>( {dollarSigns} )</span>
+          {locations && (
+            <p sx={{ m: 0, mb: [4], color: `red` }}>
+              {locations.map(l => (
+                <span>{l}</span>
+              ))}
+            </p>
+          )}
           <div
             sx={{
               display: `flex`,
@@ -92,8 +120,8 @@ const PostPageTemplate = ({ data }) => {
                   py: 15,
                 }}
               >
-                Price Range:
-                <span sx={{ color: `secondary`, ml: 10 }}>{dollarSigns}</span>
+                Approx. Bill:
+                <span sx={{ color: `secondary`, ml: 10 }}>{approxBill}</span>
               </h3>
             </div>
             <div

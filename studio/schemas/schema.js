@@ -10,6 +10,7 @@ import post from './post';
 import author from './author';
 import mainImage from './mainImage';
 import category from './category';
+import settings from './settings';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -20,12 +21,13 @@ export default createSchema({
   types: schemaTypes.concat([
     // The following are document types which will appear
     // in the studio.
+    settings,
     post,
     author,
     category,
     mainImage,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
-    blockContent
-  ])
+    blockContent,
+  ]),
 });

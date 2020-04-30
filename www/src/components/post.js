@@ -68,7 +68,7 @@ function Post({ post }) {
         </div>
       )}
       <p sx={{ color: `grey`, my: 0, fontSize: [0, 0, 1] }}>
-        Posted: {post._createdAt}
+        <span sx={{ fontWeight: `bold` }}>Good For:</span> {post.goodFor}
       </p>
       {/* {post.locations && (
         <p sx={{ m: 0 }}>

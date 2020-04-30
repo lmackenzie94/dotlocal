@@ -24,6 +24,8 @@ export const query = graphql`
           }
           price
           locations
+          goodFor
+          approxBill
           category {
             name
           }
@@ -32,7 +34,7 @@ export const query = graphql`
             caption
             asset {
               fluid {
-                ...GatsbySanityImageFluid
+                ...GatsbySanityImageFluid_noBase64
               }
             }
             hotspot {

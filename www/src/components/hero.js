@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { jsx, Image } from "theme-ui"
 import { Wrapper, Section } from "../system"
 import { motion as M } from "framer-motion"
 import { useEffect } from "react"
@@ -30,7 +30,7 @@ const Hero = () => {
       rgba(0,4,41, 0.9)
     ), url(${image})`,
         backgroundSize: `cover`,
-        backgroundPosition: `center`,
+        backgroundPosition: `left`,
       }}
     >
       <Wrapper
@@ -42,7 +42,26 @@ const Hero = () => {
           height: `100%`,
         }}
       >
-        <img src={logo} alt="logo" sx={{ width: 190 }} />
+        <div
+          sx={{
+            width: 190,
+            pb: 190,
+            position: `relative`,
+            overflow: `hidden`,
+          }}
+        >
+          <img
+            src={logo}
+            alt="logo"
+            sx={{
+              width: `100%`,
+              height: `100%`,
+              position: `absolute`,
+              top: 0,
+              left: 0,
+            }}
+          />
+        </div>
         <M.h2
           sx={{
             variant: `styles.h2`,

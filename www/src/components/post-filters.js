@@ -67,7 +67,7 @@ function PostFilters({
       <div
         sx={{
           display: [`block`, `block`, `block`, `inline-block`],
-          ml: [2, 3],
+          ml: [3, 4],
         }}
       >
         {/* <p

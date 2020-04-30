@@ -26,20 +26,24 @@ const About = () => {
     shouldAnimate = false
   }, [])
   return (
-    <Section sx={{ background: `white`, my: [4, 4, 5], py: [4, 4, 5] }}>
+    <Section sx={{ background: `white`, my: [4, 4, 5], py: [4] }}>
       <Wrapper>
-        <M.div sx={{ textAlign: `center`, mb: [3, 3, 4] }}>
+        <M.div
+          sx={{
+            textAlign: `center`,
+            mb: [3, 3, 4],
+            maxWidth: 600,
+            m: `0 auto`,
+          }}
+        >
           <M.p sx={{ mt: 0 }} variants={shouldAnimate ? itemVariants : null}>
-            Being a young person in Toronto is expensive and frankly,
-            exhausting.
-            <br />
-            But there's a plethora of culture in this city that you just can't
-            miss out on.
+            While being a young person in Toronto is expensive and frankly,
+            exhausting, there's a plethora of culture in this city that you just
+            can't miss out on.
           </M.p>
           <M.p variants={shouldAnimate ? itemVariants : null}>
-            On this page you can expect to find relevant information you need
-            <br />
-            to make informed decisions about how you spend your time & money in
+            On this page you can expect to find relevant information you need to
+            make informed decisions about how you spend your time & money in
             this city.
           </M.p>
         </M.div>
