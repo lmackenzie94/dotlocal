@@ -10,13 +10,6 @@ function SEO({ description, lang, meta, title }) {
         settings: sanitySettings {
           siteTitle
           description
-          logo {
-            asset {
-              fluid {
-                ...GatsbySanityImageFluid
-              }
-            }
-          }
         }
       }
     `
