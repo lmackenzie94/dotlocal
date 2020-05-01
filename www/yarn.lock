@@ -1264,6 +1264,13 @@
   dependencies:
     core-js "^2.5.7"
 
+"@lmack/hooks@^1.0.11":
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@lmack/hooks/-/hooks-1.0.11.tgz#be7b5d453a6d9ebfaad522340dd4443103f44abf"
+  integrity sha512-a410E+fSzEcHwVirOvqOQQqoWY9qFJdJkcLtA/cxHZi4r58vvTeQqkUXgulqUFh5KL8iZ25ErsVkvAuF9h/SBA==
+  dependencies:
+    form-serialize "^0.7.2"
+
 "@mdx-js/react@^1.0.0":
   version "1.5.7"
   resolved "https://registry.yarnpkg.com/@mdx-js/react/-/react-1.5.7.tgz#dd7e08c9cdd3c3af62c9594c2c9003a3d05e34fd"
@@ -5551,6 +5558,11 @@ form-data@~2.3.2:
     asynckit "^0.4.0"
     combined-stream "^1.0.6"
     mime-types "^2.1.12"
+
+form-serialize@^0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/form-serialize/-/form-serialize-0.7.2.tgz#b0a2ff0c22026fb6d3d15c9d33f6de6a432e4732"
+  integrity sha1-sKL/DCICb7bT0VydM/beakMuRzI=
 
 form-urlencoded@^2.0.7:
   version "2.0.9"

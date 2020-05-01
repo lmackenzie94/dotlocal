@@ -5,6 +5,7 @@ import Post from "./post"
 import { motion as M } from "framer-motion"
 import PostFilters from "./post-filters"
 import { Section, Wrapper } from "../system"
+import { useIntersectionObserver } from "@lmack/hooks"
 
 let shouldAnimate = true
 
@@ -20,6 +21,11 @@ function PostList({ postData }) {
   const [priceRating, setPriceRating] = useState(null)
   const [categoryFilter, setCategoryFilter] = useState(null)
   const [sortBy, setSortBy] = useState(null)
+
+  const [ref, isVisible] = useIntersectionObserver({
+    triggerOnce: false,
+    rootMargin: `-100px`,
+  })
 
   useEffect(() => {
     shouldAnimate = false
@@ -87,7 +93,7 @@ function PostList({ postData }) {
     <Section id="post-list">
       <Wrapper>
         <M.h2
-          variants={shouldAnimate ? basicVariants : null}
+          variants={shouldAnimate && isVisible ? basicVariants : null}
           initial={"hidden"}
           animate={"visible"}
           sx={{
@@ -109,9 +115,10 @@ function PostList({ postData }) {
         />
         {filteredPosts.length > 0 ? (
           <M.ul
+            ref={ref}
             variants={containerVariants}
             initial={"before"}
-            animate={"after"}
+            animate={isVisible ? "after" : null}
             sx={{
               listStyle: `none`,
               m: 0,
