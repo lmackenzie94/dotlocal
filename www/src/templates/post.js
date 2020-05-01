@@ -21,6 +21,7 @@ export const query = graphql`
       }
       price
       goodFor
+      description
       approxBill
       locations
       images {
@@ -46,12 +47,25 @@ const PostPageTemplate = ({ data }) => {
     _rawBody,
     locations,
     goodFor,
+    description,
     approxBill,
   } = data.post
   let dollarSigns = ""
   for (let i = 0; i < price; i++) {
     dollarSigns += "$"
   }
+
+  const subText =
+    dollarSigns && goodFor ? (
+      <p sx={{ fontSize: [4], my: 0 }}>
+        {dollarSigns} &#8226; {goodFor}
+      </p>
+    ) : dollarSigns && !goodFor ? (
+      <p sx={{ fontSize: [4], my: 0 }}>{dollarSigns}</p>
+    ) : !dollarSigns && goodFor ? (
+      <p sx={{ fontSize: [4], my: 0 }}>{goodFor}</p>
+    ) : null
+
   return (
     <Layout>
       <SEO title={title} />
@@ -66,7 +80,8 @@ const PostPageTemplate = ({ data }) => {
           >
             {title}
           </h1>
-          <span sx={{ ml: `10px`, fontSize: [4] }}>( {dollarSigns} )</span>
+          {description && <p>{description}</p>}
+          {subText}
           {locations && (
             <p sx={{ m: 0, mb: [4], color: `red` }}>
               {locations.map(l => (
@@ -91,7 +106,7 @@ const PostPageTemplate = ({ data }) => {
                 flexDirection: `column`,
                 justifyContent: `space-evenly`,
                 flex: `0 0 auto`,
-                mr: [0, 0, 40, 50],
+                mr: [0, 0, 50, 60, 70],
               }}
             >
               <h2
@@ -103,26 +118,29 @@ const PostPageTemplate = ({ data }) => {
                   width: [`100%`, `100%`, `90%`],
                   textAlign: [`center`, `center`, `left`],
                   mt: [20, 20, 0],
+                  mb: 0,
                 }}
               >
                 {`${author.name}'s Picks:`}
               </h2>
               {_rawBody && <BlockContent blocks={_rawBody || []} />}
-              <h3
-                sx={{
-                  variant: `styles.h3`,
-                  width: [`100%`, `100%`, `90%`],
-                  borderColor: `red`,
-                  borderTop: `0.5px dashed`,
-                  borderBottom: `0.5px dashed`,
-                  textAlign: [`center`, `center`, `left`],
-                  m: 0,
-                  py: 15,
-                }}
-              >
-                Approx. Bill:
-                <span sx={{ color: `secondary`, ml: 10 }}>{approxBill}</span>
-              </h3>
+              {approxBill && (
+                <h3
+                  sx={{
+                    variant: `styles.h3`,
+                    width: [`100%`, `100%`, `90%`],
+                    borderColor: `red`,
+                    borderTop: `0.5px dashed`,
+                    borderBottom: `0.5px dashed`,
+                    textAlign: [`center`, `center`, `left`],
+                    m: 0,
+                    py: 15,
+                  }}
+                >
+                  Approx. Bill:
+                  <span sx={{ color: `secondary`, ml: 10 }}>{approxBill}</span>
+                </h3>
+              )}
             </div>
             <div
               sx={{

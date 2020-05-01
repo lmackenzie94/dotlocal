@@ -32,7 +32,7 @@ const Dots = ({ activeIdx, setActiveIdx, slides }) => {
         display: `flex`,
         alignItems: `center`,
         justifyContent: `center`,
-        background: `rgba(255,255,255,0.5)`,
+        background: `rgba(0,0,0,0.5)`,
         borderRadius: `4px`,
       }}
     >

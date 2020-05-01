@@ -67,9 +67,16 @@ function Post({ post }) {
           </p>
         </div>
       )}
-      <p sx={{ color: `grey`, my: 0, fontSize: [0, 0, 1] }}>
-        <span sx={{ fontWeight: `bold` }}>Good For:</span> {post.goodFor}
-      </p>
+      {post.category.name === "Fashion" ? (
+        <p sx={{ color: `grey`, my: 0, fontSize: [0, 0, 1] }}>
+          {post.description}
+        </p>
+      ) : (
+        <p sx={{ color: `grey`, my: 0, fontSize: [0, 0, 1] }}>
+          <span sx={{ fontWeight: `bold` }}>Good For:</span> {post.goodFor}
+        </p>
+      )}
+
       {/* {post.locations && (
         <p sx={{ m: 0 }}>
           {post.locations.map(l => (

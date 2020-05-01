@@ -12,7 +12,9 @@
     "@sanity/components",
     "@sanity/default-layout",
     "@sanity/default-login",
-    "@sanity/desk-tool"
+    "@sanity/desk-tool",
+    "@sanity/dashboard",
+    "dashboard-widget-netlify"
   ],
   "parts": [
     {
@@ -22,6 +24,10 @@
     {
       "implements": "part:@sanity/base/theme/variables/override-style",
       "path": "./variableOverrides.css"
+    },
+    {
+      "implements": "part:@sanity/dashboard/config",
+      "path": "./dashboardConfig.js"
     }
   ]
 }

@@ -25,6 +25,7 @@ export const query = graphql`
           price
           locations
           goodFor
+          description
           approxBill
           category {
             name

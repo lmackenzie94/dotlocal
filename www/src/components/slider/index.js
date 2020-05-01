@@ -29,7 +29,6 @@ const Slider = ({ slides }) => {
       setActiveIdx(prevIdx => prevIdx - 1)
     }
   }
-  console.log(activeIdx)
 
   return (
     <div sx={SliderStyles}>

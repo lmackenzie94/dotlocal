@@ -1,10 +1,12 @@
 import React from 'react';
 import { imageUrlFor } from '../lib/image-url';
+import { BsPencilSquare } from 'react-icons/bs';
 
 export default {
   name: 'post',
   title: 'Post',
   type: 'document',
+  icon: BsPencilSquare,
   fields: [
     {
       name: 'title',
@@ -90,6 +92,11 @@ export default {
     //   title: 'Published at',
     //   type: 'datetime',
     // },
+    {
+      name: 'description',
+      title: 'Restaurant / Store Description',
+      type: 'string',
+    },
     {
       name: 'goodFor',
       title: 'Good For',

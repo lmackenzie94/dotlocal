@@ -124,7 +124,11 @@ function PostList({ postData }) {
             }}
           >
             {filteredPosts.map(({ node: post }) => (
-              <M.li key={post.id} variants={itemVariants}>
+              <M.li
+                key={post.id}
+                variants={itemVariants}
+                sx={{ alignSelf: `end` }}
+              >
                 <Post post={post} />
               </M.li>
             ))}

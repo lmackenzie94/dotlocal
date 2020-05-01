@@ -31,7 +31,7 @@ const Arrow = ({ direction, handleClick }) => {
         alignItems: `center`,
         cursor: `pointer`,
         borderRadius: `50%`,
-        background: `rgba(0,0,0,0.7)`,
+        background: `rgba(0,0,0,0.55)`,
         outline: `none`,
         border: `none`,
         "&:hover, &:focus": {
