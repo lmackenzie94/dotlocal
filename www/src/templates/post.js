@@ -85,7 +85,7 @@ const PostPageTemplate = ({ data }) => {
           {locations && (
             <p sx={{ m: 0, mb: [4], color: `red` }}>
               {locations.map(l => (
-                <span>{l}</span>
+                <span key={l}>{l}</span>
               ))}
             </p>
           )}

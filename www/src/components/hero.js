@@ -6,9 +6,10 @@ import { useEffect } from "react"
 import image from "../images/the6.jpg"
 import logo from "../images/logo.svg"
 import smoothScrollTo from "../utils/smoothScrollTo"
+import Logoo from "../icons/logo"
 
 const basicVariants = {
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  visible: { opacity: 1, y: 0 },
   hidden: { opacity: 0, y: 10 },
 }
 
@@ -44,23 +45,13 @@ const Hero = () => {
       >
         <div
           sx={{
-            width: 190,
-            pb: 190,
+            width: 152,
+            pb: 152,
             position: `relative`,
             overflow: `hidden`,
           }}
         >
-          <img
-            src={logo}
-            alt="logo"
-            sx={{
-              width: `100%`,
-              height: `100%`,
-              position: `absolute`,
-              top: 0,
-              left: 0,
-            }}
-          />
+          <Logoo sx={{ position: `absolute`, top: 0, left: 0 }} />
         </div>
         <M.h2
           sx={{
@@ -72,6 +63,7 @@ const Hero = () => {
           initial="hidden"
           animate="visible"
           variants={shouldAnimate ? basicVariants : null}
+          transition={{ delay: 2.5, duration: 1 }}
         >
           Your guide for food and men’s fashion accessible to you in the Toronto
           area.
@@ -79,6 +71,10 @@ const Hero = () => {
         <M.button
           sx={{ variant: `buttons.primary`, textTransform: `uppercase` }}
           onClick={() => smoothScrollTo("post-list")}
+          initial="hidden"
+          animate="visible"
+          variants={shouldAnimate ? basicVariants : null}
+          transition={{ delay: 3.3, duration: 1 }}
         >
           Browse
         </M.button>
