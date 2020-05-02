@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import React from "react"
 import { jsx } from "theme-ui"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -55,10 +56,11 @@ const PostPageTemplate = ({ data }) => {
     dollarSigns += "$"
   }
 
-  const subText =
-    dollarSigns && goodFor ? (
+  // not sure useMemo is necessary?
+  const subText = React.useMemo(() => {
+    return dollarSigns && (goodFor || description) ? (
       <p sx={{ fontSize: [4], my: 0, textAlign: [`center`, `center`, `left`] }}>
-        {dollarSigns} &#8226; {goodFor}
+        {dollarSigns} &#8226; {goodFor || description}
       </p>
     ) : dollarSigns && !goodFor ? (
       <p sx={{ fontSize: [4], my: 0, textAlign: [`center`, `center`, `left`] }}>
@@ -69,6 +71,7 @@ const PostPageTemplate = ({ data }) => {
         {goodFor}
       </p>
     ) : null
+  }, [dollarSigns, goodFor, description])
 
   return (
     <Layout>
@@ -83,11 +86,6 @@ const PostPageTemplate = ({ data }) => {
           >
             {title}
           </h1>
-          {description && (
-            <p sx={{ textAlign: [`center`, `center`, `left`] }}>
-              {description}
-            </p>
-          )}
           {subText}
           {locations && (
             <p

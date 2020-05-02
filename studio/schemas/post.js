@@ -61,6 +61,7 @@ export default {
       name: 'price',
       title: 'Price',
       type: 'string',
+      validation: (Rule) => Rule.required(),
       options: {
         list: [
           {

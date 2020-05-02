@@ -76,14 +76,6 @@ function Post({ post }) {
           <span sx={{ fontWeight: `bold` }}>Good For:</span> {post.goodFor}
         </p>
       )}
-
-      {/* {post.locations && (
-        <p sx={{ m: 0 }}>
-          {post.locations.map(l => (
-            <span>{l}</span>
-          ))}
-        </p>
-      )} */}
     </Link>
   )
 }
