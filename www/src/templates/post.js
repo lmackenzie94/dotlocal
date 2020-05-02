@@ -57,13 +57,17 @@ const PostPageTemplate = ({ data }) => {
 
   const subText =
     dollarSigns && goodFor ? (
-      <p sx={{ fontSize: [4], my: 0 }}>
+      <p sx={{ fontSize: [4], my: 0, textAlign: [`center`, `center`, `left`] }}>
         {dollarSigns} &#8226; {goodFor}
       </p>
     ) : dollarSigns && !goodFor ? (
-      <p sx={{ fontSize: [4], my: 0 }}>{dollarSigns}</p>
+      <p sx={{ fontSize: [4], my: 0, textAlign: [`center`, `center`, `left`] }}>
+        {dollarSigns}
+      </p>
     ) : !dollarSigns && goodFor ? (
-      <p sx={{ fontSize: [4], my: 0 }}>{goodFor}</p>
+      <p sx={{ fontSize: [4], my: 0, textAlign: [`center`, `center`, `left`] }}>
+        {goodFor}
+      </p>
     ) : null
 
   return (
@@ -75,15 +79,25 @@ const PostPageTemplate = ({ data }) => {
             sx={{
               textAlign: [`center`, `center`, `left`],
               mb: [0],
-              display: `inline-block`,
             }}
           >
             {title}
           </h1>
-          {description && <p>{description}</p>}
+          {description && (
+            <p sx={{ textAlign: [`center`, `center`, `left`] }}>
+              {description}
+            </p>
+          )}
           {subText}
           {locations && (
-            <p sx={{ m: 0, mb: [4], color: `red` }}>
+            <p
+              sx={{
+                m: 0,
+                mb: [4],
+                color: `red`,
+                textAlign: [`center`, `center`, `left`],
+              }}
+            >
               {locations.map(l => (
                 <span key={l}>{l}</span>
               ))}
@@ -104,9 +118,9 @@ const PostPageTemplate = ({ data }) => {
               sx={{
                 display: `flex`,
                 flexDirection: `column`,
-                justifyContent: `space-evenly`,
-                flex: `0 0 auto`,
-                mr: [0, 0, 50, 60, 70],
+                justifyContent: `center`,
+                flex: `1 1 auto`,
+                mr: [0, 0, 50, 60],
               }}
             >
               <h2
@@ -115,7 +129,6 @@ const PostPageTemplate = ({ data }) => {
                   textTransform: `uppercase`,
                   borderBottom: `2px solid`,
                   borderColor: `secondary`,
-                  width: [`100%`, `100%`, `90%`],
                   textAlign: [`center`, `center`, `left`],
                   mt: [20, 20, 0],
                   mb: 0,
@@ -145,10 +158,9 @@ const PostPageTemplate = ({ data }) => {
             <div
               sx={{
                 display: `flex`,
-                flex: `0 1 100%`,
+                flex: `10 1 auto`,
                 alignItems: `center`,
-                borderTopRightRadius: 10,
-                borderBottomRightRadius: 10,
+                minWidth: `40%`,
               }}
             >
               <Slider slides={images} />

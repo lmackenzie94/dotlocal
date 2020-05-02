@@ -23,8 +23,8 @@ function PostList({ postData }) {
   const [sortBy, setSortBy] = useState(null)
 
   const [ref, isVisible] = useIntersectionObserver({
-    triggerOnce: false,
-    rootMargin: `-100px`,
+    rootMargin: `-185px`,
+    triggerOnce: true,
   })
 
   useEffect(() => {
@@ -39,15 +39,6 @@ function PostList({ postData }) {
         delayChildren: shouldAnimate ? 0.5 : 0,
       },
     },
-  }
-
-  const basicVariants = {
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, delay: shouldAnimate ? 0.5 : 0 },
-    },
-    hidden: { opacity: 0, y: 10 },
   }
 
   const filteredPosts = posts.filter(({ node: post }) => {
@@ -93,9 +84,6 @@ function PostList({ postData }) {
     <Section id="post-list">
       <Wrapper>
         <M.h2
-          variants={shouldAnimate && isVisible ? basicVariants : null}
-          initial={"hidden"}
-          animate={"visible"}
           sx={{
             variant: `styles.h3`,
             fontSize: [4, 4, 4, 5],

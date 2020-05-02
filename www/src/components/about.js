@@ -3,54 +3,66 @@ import { jsx } from "theme-ui"
 import { Wrapper, Section } from "../system"
 import { motion as M } from "framer-motion"
 import { useEffect } from "react"
+import { useIntersectionObserver } from "@lmack/hooks"
 
-const basicVariants = {
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  hidden: { opacity: 0, y: 10 },
-}
-
-const containerVariants = {
-  before: {},
-  after: { transition: { staggerChildren: 0.075, delayChildren: 0.3 } },
-}
-
-const itemVariants = {
-  before: { opacity: 0, scale: 0.75 },
-  after: { opacity: 1, scale: 1 },
+const fadeUp = {
+  before: { opacity: 0, y: 10 },
+  after: {
+    opacity: 1,
+    y: 0,
+  },
 }
 
 let shouldAnimate = true
 
 const About = () => {
+  const [refOne, isVisibleOne] = useIntersectionObserver({
+    rootMargin: `-150px`,
+    triggerOnce: true,
+  })
+  const [refTwo, isVisibleTwo] = useIntersectionObserver({
+    rootMargin: `-100px`,
+    triggerOnce: true,
+  })
+
   useEffect(() => {
-    shouldAnimate = false
-  }, [])
+    if (isVisibleOne || isVisibleTwo) {
+      shouldAnimate = false
+    }
+  }, [isVisibleOne, isVisibleTwo])
+
+  console.log("Render About")
+
   return (
     <Section sx={{ background: `white`, my: [4, 4, 5], py: [4] }}>
       <Wrapper>
         <M.div
+          ref={refOne}
           sx={{
             textAlign: `center`,
             mb: [3, 3, 4],
             maxWidth: 600,
             m: `0 auto`,
           }}
+          variants={shouldAnimate ? fadeUp : null}
+          initial={"before"}
+          animate={isVisibleOne ? "after" : null}
         >
-          <M.p sx={{ mt: 0 }} variants={shouldAnimate ? itemVariants : null}>
+          <M.p sx={{ mt: 0 }}>
             While being a young person in Toronto is expensive and frankly,
             exhausting, there's a plethora of culture in this city that you just
             can't miss out on.
           </M.p>
-          <M.p variants={shouldAnimate ? itemVariants : null}>
+          <M.p>
             On this page you can expect to find relevant information you need to
             make informed decisions about how you spend your time & money in
             this city.
           </M.p>
         </M.div>
         <M.div
-          variants={shouldAnimate ? containerVariants : null}
+          variants={shouldAnimate ? fadeUp : null}
           initial={"before"}
-          animate={"after"}
+          animate={isVisibleTwo ? "after" : null}
           sx={{
             display: `flex`,
             justifyContent: `center`,
@@ -60,6 +72,7 @@ const About = () => {
           }}
         >
           <div
+            ref={refTwo}
             sx={{
               bg: `#f3f3f3`,
               width: 320,

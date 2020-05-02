@@ -1264,10 +1264,10 @@
   dependencies:
     core-js "^2.5.7"
 
-"@lmack/hooks@^1.0.11":
-  version "1.0.11"
-  resolved "https://registry.yarnpkg.com/@lmack/hooks/-/hooks-1.0.11.tgz#be7b5d453a6d9ebfaad522340dd4443103f44abf"
-  integrity sha512-a410E+fSzEcHwVirOvqOQQqoWY9qFJdJkcLtA/cxHZi4r58vvTeQqkUXgulqUFh5KL8iZ25ErsVkvAuF9h/SBA==
+"@lmack/hooks@^1.0.13":
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/@lmack/hooks/-/hooks-1.0.13.tgz#d4e8917ffbe7c42fb496eae891ee8d7bb9fe7dd5"
+  integrity sha512-H8ai77uFBdl4OYFCmYnLDLDJO7kdUNKZrlTxdYR6CEyYT7HXM44gtPU/4nqnABc9AX2g058PM1w7ewaVz70wkQ==
   dependencies:
     form-serialize "^0.7.2"
 

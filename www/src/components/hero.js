@@ -4,9 +4,8 @@ import { Wrapper, Section } from "../system"
 import { motion as M } from "framer-motion"
 import { useEffect } from "react"
 import image from "../images/the6.jpg"
-import logo from "../images/logo.svg"
 import smoothScrollTo from "../utils/smoothScrollTo"
-import Logoo from "../icons/logo"
+import Logo from "../icons/logo"
 
 const basicVariants = {
   visible: { opacity: 1, y: 0 },
@@ -45,13 +44,13 @@ const Hero = () => {
       >
         <div
           sx={{
-            width: 152,
-            pb: 152,
+            width: 194,
+            pb: 194,
             position: `relative`,
             overflow: `hidden`,
           }}
         >
-          <Logoo sx={{ position: `absolute`, top: 0, left: 0 }} />
+          <Logo sx={{ position: `absolute`, top: 0, left: 0 }} />
         </div>
         <M.h2
           sx={{
@@ -63,7 +62,7 @@ const Hero = () => {
           initial="hidden"
           animate="visible"
           variants={shouldAnimate ? basicVariants : null}
-          transition={{ delay: 2.5, duration: 1 }}
+          transition={{ delay: 1.6, duration: 1 }}
         >
           Your guide for food and men’s fashion accessible to you in the Toronto
           area.
@@ -74,7 +73,7 @@ const Hero = () => {
           initial="hidden"
           animate="visible"
           variants={shouldAnimate ? basicVariants : null}
-          transition={{ delay: 3.3, duration: 1 }}
+          transition={{ delay: 2.3, duration: 1 }}
         >
           Browse
         </M.button>
