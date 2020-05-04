@@ -25,7 +25,7 @@ function Post({ post }) {
         borderRadius: 4,
         p: [2, 2, 3],
         textDecoration: `none`,
-        textAlign: [`center`, `center`, `center`, `left`],
+        textAlign: `center`,
         color: `text`,
         background: `white`,
         boxShadow: `0 2px 4px rgba(0,0,0,0.12), 0 2px 3px rgba(0,0,0,0.24);`,
@@ -38,12 +38,12 @@ function Post({ post }) {
     >
       <h3 sx={{ variant: `styles.h3` }}>{post.title}</h3>
       {mainImage && (
-        <div sx={{ position: `relative`, mx: [-2, -2, -3], mb: [3] }}>
+        <div sx={{ position: `relative`, mx: [-2, -2, -3], mb: [2, 2, 3] }}>
           <Image
             fluid={mainImage.asset.fluid}
             alt={mainImage.alt}
             sx={{
-              height: `140px`,
+              height: [`100px`, `120px`, `140px`],
               "&:img": {
                 width: `100%`,
                 transition: `0.3s ease-out`,
@@ -59,7 +59,7 @@ function Post({ post }) {
               right: `5px`,
               m: 0,
               px: `5px`,
-              bg: `white`,
+              bg: `#f2f2f2`,
               borderRadius: 4,
             }}
           >
@@ -68,11 +68,9 @@ function Post({ post }) {
         </div>
       )}
       {post.category.name === "Fashion" ? (
-        <p sx={{ color: `grey`, my: 0, fontSize: [0, 0, 1] }}>
-          {post.description}
-        </p>
+        <p sx={{ color: `grey`, my: 0, fontSize: [0] }}>{post.description}</p>
       ) : (
-        <p sx={{ color: `grey`, my: 0, fontSize: [0, 0, 1] }}>
+        <p sx={{ color: `grey`, my: 0, fontSize: [0] }}>
           <span sx={{ fontWeight: `bold` }}>Good For:</span> {post.goodFor}
         </p>
       )}

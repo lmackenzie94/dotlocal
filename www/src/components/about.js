@@ -31,8 +31,6 @@ const About = () => {
     }
   }, [isVisibleOne, isVisibleTwo])
 
-  console.log("Render About")
-
   return (
     <Section sx={{ background: `white`, my: [4, 4, 5], py: [4] }}>
       <Wrapper>

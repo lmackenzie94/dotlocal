@@ -68,12 +68,12 @@ const theme = {
     },
     h2: {
       variant: "text.heading",
-      fontSize: [4, 4, 4, 5],
+      fontSize: [3, 4, 4, 5],
       my: [3, 4, 4],
     },
     h3: {
       variant: "text.heading",
-      fontSize: [3, 3, 3, 4],
+      fontSize: [2, 3, 3, 4],
       m: 0,
       mb: [1, 2],
     },
