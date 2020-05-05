@@ -16,6 +16,7 @@ const baseButton = {
   background: `none`,
   outline: `none`,
   border: `none`,
+  transition: `background 0.2s ease-out`,
 }
 
 const theme = {
@@ -100,11 +101,15 @@ const theme = {
   buttons: {
     primary: {
       ...baseButton,
-      background: `white`,
+      background: `rgba(255,255,255,0.7)`,
+      border: `2px solid white`,
       borderRadius: 4,
       px: [4],
       py: [2],
       fontWeight: `bold`,
+      ":hover, :focus": {
+        background: `white`,
+      },
     },
     sort: {
       ...baseButton,
@@ -114,7 +119,6 @@ const theme = {
       bg: `white`,
       p: [1],
       pl: [2],
-
       mx: [2],
     },
   },
