@@ -62,15 +62,15 @@ const Header = ({ siteTitle }) => {
           sx={{
             textDecoration: `none`,
             display: `inline-block`,
+            color: `blueDark`,
+            outline: `none`,
+            ":hover, :focus": { color: `red` },
           }}
         >
           <FontAwesomeIcon
             icon={faInstagram}
-            tabIndex={0}
             sx={{
-              color: `blueDark`,
               fontSize: [6],
-              "&:hover": { color: `red` },
             }}
           />
         </a>
