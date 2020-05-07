@@ -94,6 +94,7 @@ const PostPageTemplate = ({ data }) => {
                 mb: [4],
                 color: `red`,
                 textAlign: [`center`, `center`, `left`],
+                fontSize: [0, 0, 1],
               }}
             >
               {locations.map(l => (

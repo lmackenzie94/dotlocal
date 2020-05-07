@@ -76,7 +76,7 @@ const theme = {
       variant: "text.heading",
       fontSize: [2, 3, 3, 4],
       m: 0,
-      mb: [1, 2],
+      mb: [2, 3],
     },
   },
   layout: {
@@ -101,7 +101,7 @@ const theme = {
   buttons: {
     primary: {
       ...baseButton,
-      background: `rgba(255,255,255,0.7)`,
+      background: `rgba(255,255,255,0.75)`,
       border: `2px solid white`,
       borderRadius: 4,
       px: [4],

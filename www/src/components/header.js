@@ -6,6 +6,7 @@ import PropTypes from "prop-types"
 import { Wrapper } from "../system"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faInstagram } from "@fortawesome/free-brands-svg-icons"
+import Status from "./auth/status"
 
 const Header = ({ siteTitle }) => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -55,25 +56,28 @@ const Header = ({ siteTitle }) => {
             dotlocal
           </Link>
         </h1>
-        <a
-          href="https://www.instagram.com/dotlocaltoronto/"
-          target="_blank"
-          rel="noopener noreferrer"
-          sx={{
-            textDecoration: `none`,
-            display: `inline-block`,
-            color: `blueDark`,
-            outline: `none`,
-            ":hover, :focus": { color: `red` },
-          }}
-        >
-          <FontAwesomeIcon
-            icon={faInstagram}
+        <div sx={{ display: `flex`, alignItems: `center` }}>
+          <Status />
+          <a
+            href="https://www.instagram.com/dotlocaltoronto/"
+            target="_blank"
+            rel="noopener noreferrer"
             sx={{
-              fontSize: [6],
+              textDecoration: `none`,
+              display: `inline-block`,
+              color: `blueDark`,
+              outline: `none`,
+              ":hover, :focus": { color: `red` },
             }}
-          />
-        </a>
+          >
+            <FontAwesomeIcon
+              icon={faInstagram}
+              sx={{
+                fontSize: [6],
+              }}
+            />
+          </a>
+        </div>
       </Wrapper>
     </header>
   )

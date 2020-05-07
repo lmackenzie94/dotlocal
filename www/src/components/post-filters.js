@@ -4,6 +4,7 @@ import { jsx } from "theme-ui"
 import Post from "./post"
 import PriceRating from "./price-rating"
 import { motion as M } from "framer-motion"
+import { getUser, isLoggedIn, logout } from "../utils/auth"
 
 const basicVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.5 } },
@@ -22,6 +23,7 @@ function PostFilters({
   useEffect(() => {
     shouldAnimate = false
   }, [])
+
   return (
     <M.div
       variants={shouldAnimate ? basicVariants : null}
@@ -38,9 +40,9 @@ function PostFilters({
         display: `flex`,
         justifyContent: [`center`, `center`, `flex-start`],
         alignItems: [`center`],
+        flexWrap: `wrap`,
       }}
     >
-      {/* TODO add label */}
       <select
         sx={{
           appearance: `none`,
@@ -70,16 +72,6 @@ function PostFilters({
           ml: [3, 4],
         }}
       >
-        {/* <p
-          sx={{
-            display: `inline-block`,
-            m: 0,
-            fontWeight: `bold`,
-            mr: [3],
-          }}
-        >
-          Sort Price:
-        </p> */}
         <button
           onClick={() => setSortBy("highest")}
           sx={{ variant: `buttons.sort`, color: `blueDark` }}
@@ -99,6 +91,7 @@ function PostFilters({
         setPriceRating={setPriceRating}
         sx={{ display: `inline-block`, mx: [3] }}
       />
+      {isLoggedIn() && <p sx={{ m: 0, mx: [2] }}>Your Likes</p>}
     </M.div>
   )
 }

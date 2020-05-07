@@ -2,6 +2,11 @@
 import { jsx } from "theme-ui"
 import { Link } from "gatsby"
 import Image from "gatsby-image"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faHeart } from "@fortawesome/free-regular-svg-icons"
+import { faHeart as faHeartFull } from "@fortawesome/free-solid-svg-icons"
+
+import { isLoggedIn, getUser } from "../utils/auth"
 
 function Post({ post }) {
   let dollarSigns = ""
@@ -16,6 +21,11 @@ function Post({ post }) {
           100}%`,
       }
     : null
+
+  const handleClick = () => {
+    const { displayName, uid } = getUser()
+    console.log("ID: ", post.id, "USER-ID: ", uid, "USER-NAME: ", displayName)
+  }
 
   return (
     <Link
@@ -67,13 +77,28 @@ function Post({ post }) {
           </p>
         </div>
       )}
-      {post.category.name === "Fashion" ? (
-        <p sx={{ color: `grey`, my: 0, fontSize: [0] }}>{post.description}</p>
-      ) : (
-        <p sx={{ color: `grey`, my: 0, fontSize: [0] }}>
-          <span sx={{ fontWeight: `bold` }}>Good For:</span> {post.goodFor}
-        </p>
-      )}
+      <div
+        sx={{
+          display: `flex`,
+          justifyContent: `space-between`,
+          alignItems: `center`,
+        }}
+      >
+        {post.category.name === "Fashion" ? (
+          <p sx={{ color: `grey`, my: 0, mr: `20px`, fontSize: [0] }}>
+            {post.description}
+          </p>
+        ) : (
+          <p sx={{ color: `grey`, my: 0, mr: `20px`, fontSize: [0] }}>
+            <span sx={{ fontWeight: `bold` }}>Good For:</span> {post.goodFor}
+          </p>
+        )}
+        {isLoggedIn() && (
+          <span onClick={handleClick}>
+            <FontAwesomeIcon icon={faHeart} sx={{ fontSize: `1.5rem` }} />
+          </span>
+        )}
+      </div>
     </Link>
   )
 }

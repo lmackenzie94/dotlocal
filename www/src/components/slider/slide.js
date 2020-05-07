@@ -20,7 +20,7 @@ const Slide = ({ image, idx, active }) => {
         sx={{ height: `100%` }}
         imgStyle={{ objectFit: `contain` }}
       />
-      {image.caption && <CaptionCallout text={image.caption} />}
+      {/* {image.caption && <CaptionCallout text={image.caption} />} */}
     </div>
   )
 }
