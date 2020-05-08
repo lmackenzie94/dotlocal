@@ -123,7 +123,7 @@ function Post({ post }) {
           </p>
         )}
         {isLoggedIn() && (
-          <span onClick={handleClick}>
+          <span onClick={handleClick} sx={{ cursor: `pointer` }}>
             <FontAwesomeIcon
               icon={liked ? faHeartFull : faHeart}
               sx={{ fontSize: `1.5rem` }}
