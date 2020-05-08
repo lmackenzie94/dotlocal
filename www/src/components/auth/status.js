@@ -23,7 +23,7 @@ export default () => {
   } else {
     const { displayName, email } = getUser()
     details = (
-      <p>
+      <p style={{ margin: 0 }}>
         Hello, {displayName}! ({email})
         <a
           href="/"

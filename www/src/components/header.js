@@ -7,6 +7,8 @@ import { Wrapper } from "../system"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faInstagram } from "@fortawesome/free-brands-svg-icons"
 import Status from "./auth/status"
+import { FirebaseContext } from "./auth/context"
+import { useContext } from "react"
 
 const Header = ({ siteTitle }) => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -24,6 +26,9 @@ const Header = ({ siteTitle }) => {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [isScrolled])
+
+  const firebase = useContext(FirebaseContext)
+  console.log("HELLO FROM HEADER", firebase)
 
   return (
     <header sx={{ variant: "layout.header", py: isScrolled ? [2] : [3] }}>

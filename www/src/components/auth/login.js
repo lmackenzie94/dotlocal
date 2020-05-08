@@ -1,23 +1,23 @@
-// import { navigate } from "@reach/router"
-// import View from "./View"
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { useState } from "react"
+import { useState, useContext } from "react"
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
 import { setUser, isLoggedIn } from "../../utils/auth"
 import { useFirebase } from "gatsby-plugin-firebase"
 import { navigate } from "@reach/router"
+import { FirebaseContext } from "./context"
 
 const Login = () => {
+  // const [firebase, setFirebase] = useContext(FirebaseContext)
   const [firebase, setFirebase] = useState()
 
-  useFirebase(firebase => {
-    setFirebase(firebase)
+  useFirebase(fb => {
+    setFirebase(fb)
   }, [])
 
   if (isLoggedIn()) {
     console.log("LOGGED IN")
-    // navigate(`/app/profile`)
+    // navigate(`/`)
   }
 
   function getUiConfig(auth) {
@@ -31,7 +31,7 @@ const Login = () => {
       callbacks: {
         signInSuccessWithAuthResult: result => {
           setUser(result.user)
-          console.log("USERRRRR", result.user.displayName, result.user.uid)
+          // console.log("USERRRRR", result.user.displayName, result.user.uid)
           navigate("/")
         },
       },

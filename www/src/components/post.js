@@ -5,10 +5,13 @@ import Image from "gatsby-image"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart } from "@fortawesome/free-regular-svg-icons"
 import { faHeart as faHeartFull } from "@fortawesome/free-solid-svg-icons"
+import { useContext, useState, useEffect } from "react"
+import { FirebaseContext } from "./auth/context"
 
 import { isLoggedIn, getUser } from "../utils/auth"
 
 function Post({ post }) {
+  const [liked, setLiked] = useState(false)
   let dollarSigns = ""
   for (let i = 0; i < post.price; i++) {
     dollarSigns += "$"
@@ -22,9 +25,35 @@ function Post({ post }) {
       }
     : null
 
-  const handleClick = () => {
-    const { displayName, uid } = getUser()
-    console.log("ID: ", post.id, "USER-ID: ", uid, "USER-NAME: ", displayName)
+  const [firebase] = useContext(FirebaseContext)
+
+  // move to a global context?
+  const { displayName, uid } = getUser()
+
+  useEffect(() => {
+    if (firebase) {
+      firebase
+        .database()
+        .ref(`users/${uid}/likedPosts`)
+        .once("value")
+        .then(snapshot => {
+          const likedPosts = Object.values(snapshot.val())
+          if (likedPosts.includes(post.id)) {
+            setLiked(true)
+          }
+        })
+    }
+  }, [firebase])
+
+  const handleClick = e => {
+    e.preventDefault()
+    // e.stopPropagation()
+    // e.nativeEvent.stopImmediatePropagation()
+    firebase
+      .database()
+      .ref(`users/${uid}/likedPosts`)
+      .push(post.id)
+    // .push(post.id)
   }
 
   return (
@@ -95,7 +124,10 @@ function Post({ post }) {
         )}
         {isLoggedIn() && (
           <span onClick={handleClick}>
-            <FontAwesomeIcon icon={faHeart} sx={{ fontSize: `1.5rem` }} />
+            <FontAwesomeIcon
+              icon={liked ? faHeartFull : faHeart}
+              sx={{ fontSize: `1.5rem` }}
+            />
           </span>
         )}
       </div>
