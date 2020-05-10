@@ -5,6 +5,9 @@ import Post from "./post"
 import PriceRating from "./price-rating"
 import { motion as M } from "framer-motion"
 import { getUser, isLoggedIn, logout } from "../utils/auth"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faHeart as faHeartFull } from "@fortawesome/free-solid-svg-icons"
+import { faHeart } from "@fortawesome/free-regular-svg-icons"
 
 const basicVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.5 } },
@@ -18,6 +21,8 @@ function PostFilters({
   handleChange,
   priceRating,
   setPriceRating,
+  setUserSavedPostsFilter,
+  userSavedPostsFilter,
   setSortBy,
 }) {
   useEffect(() => {
@@ -91,7 +96,22 @@ function PostFilters({
         setPriceRating={setPriceRating}
         sx={{ display: `inline-block`, mx: [3] }}
       />
-      {isLoggedIn() && <p sx={{ m: 0, mx: [2] }}>Your Likes</p>}
+      {isLoggedIn() && (
+        <button
+          onClick={() => setUserSavedPostsFilter(prev => !prev)}
+          sx={{
+            border: `none`,
+            outline: `none`,
+            borderRadius: 2,
+            p: [1],
+          }}
+        >
+          <FontAwesomeIcon
+            icon={userSavedPostsFilter ? faHeartFull : faHeart}
+            sx={{ fontSize: `1.25rem`, color: `red` }}
+          />
+        </button>
+      )}
     </M.div>
   )
 }

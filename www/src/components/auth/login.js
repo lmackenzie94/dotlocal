@@ -17,7 +17,7 @@ const Login = () => {
 
   if (isLoggedIn()) {
     console.log("LOGGED IN")
-    // navigate(`/`)
+    navigate(`/`)
   }
 
   function getUiConfig(auth) {
@@ -31,7 +31,6 @@ const Login = () => {
       callbacks: {
         signInSuccessWithAuthResult: result => {
           setUser(result.user)
-          // console.log("USERRRRR", result.user.displayName, result.user.uid)
           navigate("/")
         },
       },

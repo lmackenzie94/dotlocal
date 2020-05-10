@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React from "react"
+import React, { useEffect, useContext } from "react"
 import { jsx } from "theme-ui"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
@@ -9,6 +9,8 @@ import { config } from "@fortawesome/fontawesome-svg-core"
 import "normalize.css"
 import Header from "./header"
 import Footer from "./footer"
+import { UserSavedPostsContext, FirebaseContext } from "./auth/context"
+import { getUser } from "../utils/auth"
 
 // needed to avoid icon flash on page load
 config.autoAddCss = false
@@ -23,6 +25,31 @@ const Layout = ({ children }) => {
       }
     }
   `)
+
+  const [firebase] = useContext(FirebaseContext)
+  const [_, setSavedPosts] = useContext(UserSavedPostsContext)
+
+  // move to a global context?
+  const { uid } = getUser()
+
+  useEffect(() => {
+    if (firebase) {
+      firebase
+        .database()
+        .ref(`users/${uid}/savedPosts`)
+        .on("value", snapshot => {
+          if (snapshot.val() !== null) {
+            const savedPosts = Object.keys(snapshot.val())
+            console.log("Saved Posts", savedPosts)
+            setSavedPosts(savedPosts)
+          } else {
+            console.log("No saved posts")
+          }
+        })
+    } else {
+      console.log("Firebase undefined fam!")
+    }
+  }, [firebase, uid])
 
   return (
     <>

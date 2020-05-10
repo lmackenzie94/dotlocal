@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import { Wrapper } from "../system"
@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faInstagram } from "@fortawesome/free-brands-svg-icons"
 import Status from "./auth/status"
 import { FirebaseContext } from "./auth/context"
-import { useContext } from "react"
+import { isLoggedIn, getUser } from "../utils/auth"
 
 const Header = ({ siteTitle }) => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -29,6 +29,8 @@ const Header = ({ siteTitle }) => {
 
   const firebase = useContext(FirebaseContext)
   console.log("HELLO FROM HEADER", firebase)
+
+  const { displayName } = getUser()
 
   return (
     <header sx={{ variant: "layout.header", py: isScrolled ? [2] : [3] }}>
@@ -62,7 +64,12 @@ const Header = ({ siteTitle }) => {
           </Link>
         </h1>
         <div sx={{ display: `flex`, alignItems: `center` }}>
-          <Status />
+          <Status
+            style={{
+              display: `inline-block`,
+              mr: `20px`,
+            }}
+          />
           <a
             href="https://www.instagram.com/dotlocaltoronto/"
             target="_blank"
@@ -82,6 +89,7 @@ const Header = ({ siteTitle }) => {
               }}
             />
           </a>
+          {/* {isLoggedIn() && <p>Hello, {displayName}!</p>} */}
         </div>
       </Wrapper>
     </header>

@@ -1,10 +1,11 @@
-import React from "react"
+/** @jsx jsx */
+import { jsx } from "theme-ui"
 import { useState } from "react"
 import { Link, navigate } from "@reach/router"
 import { getUser, isLoggedIn, logout } from "../../utils/auth"
 import { useFirebase } from "gatsby-plugin-firebase"
 
-export default () => {
+export default props => {
   const [firebase, setFirebase] = useState()
 
   useFirebase(fb => {
@@ -14,7 +15,7 @@ export default () => {
   let details
   if (!isLoggedIn()) {
     details = (
-      <p>
+      <p style={{ margin: 0 }}>
         <Link to="/app/login">
           <u>Log in</u>
         </Link>
@@ -24,7 +25,6 @@ export default () => {
     const { displayName, email } = getUser()
     details = (
       <p style={{ margin: 0 }}>
-        Hello, {displayName}! ({email})
         <a
           href="/"
           onClick={event => {
@@ -41,9 +41,5 @@ export default () => {
     )
   }
 
-  return (
-    <div style={{ display: `inline-block`, marginRight: `20px` }}>
-      {details}
-    </div>
-  )
+  return <div sx={{ ...props.style }}>{details}</div>
 }
