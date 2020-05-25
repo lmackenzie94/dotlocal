@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "repository": "https://github.com/lmackenzie94/dotlocal.git",
   "author": "Luke MacKenzie <mackenzieluke94@gmail.com>",
+  "license": "MIT",
   "devDependencies": {
     "gatsby-cli": "^2.12.35"
   }
