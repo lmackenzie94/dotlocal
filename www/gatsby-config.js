@@ -62,7 +62,7 @@ module.exports = {
       options: { prefixes: [`/app/*`] },
     },
     {
-      resolve: "gatsby-plugin-firebase",
+      resolve: `gatsby-plugin-firebase`,
       options: {
         features: {
           auth: true,
@@ -85,5 +85,6 @@ module.exports = {
         },
       },
     },
+    `@lmack/sanity-heroku-preview`,
   ],
 }

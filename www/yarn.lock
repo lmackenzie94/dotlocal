@@ -1523,6 +1523,14 @@
   dependencies:
     form-serialize "^0.7.2"
 
+"@lmack/sanity-heroku-preview@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@lmack/sanity-heroku-preview/-/sanity-heroku-preview-1.0.2.tgz#2c09b5121c18fc5256f7148fd71ad1066ecebb7e"
+  integrity sha512-Oihft6bAKIkkznM2GvEwFN5zdYkHzeV2fn6izSVNYDBEu5R/MMeqkKnfKZiQO+jlOFWcwZBx4P3HnSmqDrjplQ==
+  dependencies:
+    node-cmd "^3.0.0"
+    readline-sync "^1.4.10"
+
 "@mdx-js/react@^1.0.0":
   version "1.5.7"
   resolved "https://registry.yarnpkg.com/@mdx-js/react/-/react-1.5.7.tgz#dd7e08c9cdd3c3af62c9594c2c9003a3d05e34fd"
@@ -9055,6 +9063,11 @@ node-addon-api@^2.0.0:
   resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-2.0.0.tgz#f9afb8d777a91525244b01775ea0ddbe1125483b"
   integrity sha512-ASCL5U13as7HhOExbT6OlWJJUV/lLzL2voOSP1UVehpRD8FbSrSDjfScK/KwAvVTI5AS6r4VwbOMlIqtvRidnA==
 
+node-cmd@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/node-cmd/-/node-cmd-3.0.0.tgz#38fff70a4aaa4f659d203eb57862737018e24f6f"
+  integrity sha1-OP/3CkqqT2WdID61eGJzcBjiT28=
+
 node-emoji@^1.10.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/node-emoji/-/node-emoji-1.10.0.tgz#8886abd25d9c7bb61802a658523d1f8d2a89b2da"
@@ -10934,6 +10947,11 @@ readdirp@~3.2.0:
   integrity sha512-crk4Qu3pmXwgxdSgGhgA/eXiJAPQiX4GMOZZMXnqKxHX7TaoL+3gQVo/WeuAiogr07DpnfjIMpXXa+PAIvwPGQ==
   dependencies:
     picomatch "^2.0.4"
+
+readline-sync@^1.4.10:
+  version "1.4.10"
+  resolved "https://registry.yarnpkg.com/readline-sync/-/readline-sync-1.4.10.tgz#41df7fbb4b6312d673011594145705bf56d8873b"
+  integrity sha512-gNva8/6UAe8QYepIQH/jQ2qn91Qj0B9sYjMBBs3QOB8F2CXcKgLxQaJRP76sWVRQt+QU+8fAkCbCvjjMFu7Ycw==
 
 recursive-readdir@2.2.1:
   version "2.2.1"
