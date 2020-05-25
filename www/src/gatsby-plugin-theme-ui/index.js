@@ -101,14 +101,14 @@ const theme = {
   buttons: {
     primary: {
       ...baseButton,
-      background: `rgba(255,255,255,0.75)`,
+      background: `white`,
       border: `2px solid white`,
       borderRadius: 4,
       px: [4],
       py: [2],
       fontWeight: `bold`,
       ":hover, :focus": {
-        background: `white`,
+        background: `rgba(255,255,255,0.75)`,
       },
     },
     sort: {
