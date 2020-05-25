@@ -7,7 +7,7 @@
   "devDependencies": {
     "gatsby-cli": "^2.12.35"
   },
-  "dependencies": {
-    "gatsby": "^2.22.10"
+  "engines": {
+    "node": "10.x"
   }
 }
