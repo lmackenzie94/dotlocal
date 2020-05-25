@@ -1,1 +1,1 @@
-web: cd www && yarn --force && gatsby develop -p $PORT -H 0.0.0.0
+web: cd www && gatsby develop -p $PORT -H 0.0.0.0
