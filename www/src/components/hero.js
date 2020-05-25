@@ -18,6 +18,7 @@ const Hero = () => {
   useEffect(() => {
     shouldAnimate = false
   }, [])
+
   return (
     <Section
       sx={{
@@ -40,6 +41,7 @@ const Hero = () => {
           justifyContent: `space-evenly`,
           alignItems: `center`,
           height: `100%`,
+          position: `relative`,
         }}
       >
         <div
@@ -73,7 +75,7 @@ const Hero = () => {
           initial="hidden"
           animate="visible"
           variants={shouldAnimate ? basicVariants : null}
-          transition={{ delay: 2.3, duration: 1 }}
+          transition={{ delay: 2.3, duration: 0.5 }}
         >
           Browse
         </M.button>

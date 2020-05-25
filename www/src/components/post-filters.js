@@ -4,6 +4,10 @@ import { jsx } from "theme-ui"
 import Post from "./post"
 import PriceRating from "./price-rating"
 import { motion as M } from "framer-motion"
+import { getUser, isLoggedIn, logout } from "../utils/auth"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faHeart as faHeartFull } from "@fortawesome/free-solid-svg-icons"
+import { faHeart } from "@fortawesome/free-regular-svg-icons"
 
 const basicVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.5 } },
@@ -17,11 +21,14 @@ function PostFilters({
   handleChange,
   priceRating,
   setPriceRating,
+  setUserSavedPostsFilter,
+  userSavedPostsFilter,
   setSortBy,
 }) {
   useEffect(() => {
     shouldAnimate = false
   }, [])
+
   return (
     <M.div
       variants={shouldAnimate ? basicVariants : null}
@@ -38,9 +45,9 @@ function PostFilters({
         display: `flex`,
         justifyContent: [`center`, `center`, `flex-start`],
         alignItems: [`center`],
+        flexWrap: `wrap`,
       }}
     >
-      {/* TODO add label */}
       <select
         sx={{
           appearance: `none`,
@@ -53,6 +60,7 @@ function PostFilters({
           color: `white`,
           pb: `2px`,
           pr: [3],
+          pl: `3px`,
         }}
         onChange={handleChange}
         aria-label="Select a category"
@@ -70,25 +78,19 @@ function PostFilters({
           ml: [3, 4],
         }}
       >
-        {/* <p
-          sx={{
-            display: `inline-block`,
-            m: 0,
-            fontWeight: `bold`,
-            mr: [3],
-          }}
-        >
-          Sort Price:
-        </p> */}
         <button
           onClick={() => setSortBy("highest")}
           sx={{ variant: `buttons.sort`, color: `blueDark` }}
+          title="Sort Price: High to Low"
+          aria-label="Sort Price high to low"
         >
           $&uarr;
         </button>
         <button
           onClick={() => setSortBy("lowest")}
           sx={{ variant: `buttons.sort`, color: `red` }}
+          title="Sort Price: Low to High"
+          aria-label="Sort Price low to high"
         >
           $&darr;
         </button>
@@ -97,8 +99,27 @@ function PostFilters({
         maxDollarSigns={4}
         priceRating={priceRating}
         setPriceRating={setPriceRating}
-        sx={{ display: `inline-block`, mx: [3] }}
+        sx={{ display: `inline-block`, ml: [2], mr: [3] }}
       />
+      {isLoggedIn() && (
+        <button
+          onClick={() => setUserSavedPostsFilter(prev => !prev)}
+          sx={{
+            border: `none`,
+            outline: `none`,
+            background: `white`,
+            borderRadius: 2,
+            p: [1],
+          }}
+          title="Your likes"
+          aria-label="Filter to see your saved posts"
+        >
+          <FontAwesomeIcon
+            icon={userSavedPostsFilter ? faHeartFull : faHeart}
+            sx={{ fontSize: `1.25rem`, color: `red` }}
+          />
+        </button>
+      )}
     </M.div>
   )
 }

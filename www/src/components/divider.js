@@ -8,7 +8,7 @@ function Divider() {
         display: `flex`,
         justifyContent: `center`,
         alignItems: `center`,
-        my: [`40px`, `40px`, `50px`],
+        my: [`30px`, `30px`, `40px`],
       }}
     >
       <svg height="8" width="8" sx={{ fill: `primary`, mx: `4px` }}>
