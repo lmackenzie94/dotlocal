@@ -2,7 +2,7 @@
   "name": "dotlocal-www",
   "private": true,
   "description": "dotlocal website",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "author": "Luke MacKenzie",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
