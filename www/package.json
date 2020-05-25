@@ -38,7 +38,6 @@
     "theme-ui": "^0.3.1"
   },
   "devDependencies": {
-    "gatsby-cli": "^2.12.35",
     "prettier": "^1.19.1"
   },
   "license": "MIT",
