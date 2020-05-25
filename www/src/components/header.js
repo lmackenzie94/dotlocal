@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faInstagram } from "@fortawesome/free-brands-svg-icons"
 import Status from "./auth/status"
 import { FirebaseContext } from "./auth/context"
-import { isLoggedIn, getUser } from "../utils/auth"
 
 const Header = ({ siteTitle }) => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -27,10 +26,8 @@ const Header = ({ siteTitle }) => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [isScrolled])
 
-  const firebase = useContext(FirebaseContext)
-  console.log("HELLO FROM HEADER", firebase)
-
-  const { displayName } = getUser()
+  // const firebase = useContext(FirebaseContext)
+  // // console.log("HELLO FROM HEADER", firebase)
 
   return (
     <header sx={{ variant: "layout.header", py: isScrolled ? [2] : [3] }}>
@@ -60,7 +57,7 @@ const Header = ({ siteTitle }) => {
               color: `blueDark`,
             }}
           >
-            dotlocal
+            {siteTitle}
           </Link>
         </h1>
         <div sx={{ display: `flex`, alignItems: `center` }}>
@@ -89,7 +86,6 @@ const Header = ({ siteTitle }) => {
               }}
             />
           </a>
-          {/* {isLoggedIn() && <p>Hello, {displayName}!</p>} */}
         </div>
       </Wrapper>
     </header>

@@ -18,6 +18,7 @@ const Hero = () => {
   useEffect(() => {
     shouldAnimate = false
   }, [])
+
   return (
     <Section
       sx={{
@@ -40,6 +41,7 @@ const Hero = () => {
           justifyContent: `space-evenly`,
           alignItems: `center`,
           height: `100%`,
+          position: `relative`,
         }}
       >
         <div

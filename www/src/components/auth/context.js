@@ -2,29 +2,6 @@ import React, { useState, useEffect } from "react"
 import { useFirebase } from "gatsby-plugin-firebase"
 import { getUser } from "../../utils/auth"
 
-// export const AuthContext = React.createContext()
-
-// export const AuthProvider = ({ children }) => {
-//   const [currentUser, setCurrentUser] = useState(null)
-//   const [pending, setPending] = useState(true)
-
-//   // if (pending) {
-//   //   return <>Loading...</>
-//   // }
-
-//   useEffect(() => {
-//     const user = getUser()
-
-//     setCurrentUser(user)
-//   }, [])
-
-//   return (
-//     <AuthContext.Provider value={{ currentUser }}>
-//       {children}
-//     </AuthContext.Provider>
-//   )
-// }
-
 export const FirebaseContext = React.createContext()
 
 export const FirebaseProvider = ({ children }) => {
@@ -57,3 +34,26 @@ export const UserSavedPostsProvider = ({ children }) => {
     </UserSavedPostsContext.Provider>
   )
 }
+
+// export const AuthContext = React.createContext()
+
+// export const AuthProvider = ({ children }) => {
+//   const [currentUser, setCurrentUser] = useState(null)
+//   const [pending, setPending] = useState(true)
+
+//   // if (pending) {
+//   //   return <>Loading...</>
+//   // }
+
+//   useEffect(() => {
+//     const user = getUser()
+
+//     setCurrentUser(user)
+//   }, [])
+
+//   return (
+//     <AuthContext.Provider value={{ currentUser }}>
+//       {children}
+//     </AuthContext.Provider>
+//   )
+// }

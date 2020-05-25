@@ -16,16 +16,15 @@ import { getUser } from "../utils/auth"
 config.autoAddCss = false
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
+  const site = useStaticQuery(
+    graphql`
+      query {
+        settings: sanitySettings {
+          siteTitle
         }
       }
-    }
-  `)
-
+    `
+  )
   const [firebase] = useContext(FirebaseContext)
   const [_, setSavedPosts] = useContext(UserSavedPostsContext)
 
@@ -73,7 +72,7 @@ const Layout = ({ children }) => {
           },
         })}
       />
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header siteTitle={site.settings.siteTitle} />
       {/* flex: 1 to keep footer at bottom of page */}
       <main sx={{ flex: 1 }}>{children}</main>
       <Footer />

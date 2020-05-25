@@ -60,6 +60,7 @@ function PostFilters({
           color: `white`,
           pb: `2px`,
           pr: [3],
+          pl: `3px`,
         }}
         onChange={handleChange}
         aria-label="Select a category"
@@ -80,12 +81,16 @@ function PostFilters({
         <button
           onClick={() => setSortBy("highest")}
           sx={{ variant: `buttons.sort`, color: `blueDark` }}
+          title="Sort Price: High to Low"
+          aria-label="Sort Price high to low"
         >
           $&uarr;
         </button>
         <button
           onClick={() => setSortBy("lowest")}
           sx={{ variant: `buttons.sort`, color: `red` }}
+          title="Sort Price: Low to High"
+          aria-label="Sort Price low to high"
         >
           $&darr;
         </button>
@@ -94,7 +99,7 @@ function PostFilters({
         maxDollarSigns={4}
         priceRating={priceRating}
         setPriceRating={setPriceRating}
-        sx={{ display: `inline-block`, mx: [3] }}
+        sx={{ display: `inline-block`, ml: [2], mr: [3] }}
       />
       {isLoggedIn() && (
         <button
@@ -102,9 +107,12 @@ function PostFilters({
           sx={{
             border: `none`,
             outline: `none`,
+            background: `white`,
             borderRadius: 2,
             p: [1],
           }}
+          title="Your likes"
+          aria-label="Filter to see your saved posts"
         >
           <FontAwesomeIcon
             icon={userSavedPostsFilter ? faHeartFull : faHeart}
