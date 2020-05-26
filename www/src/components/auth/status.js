@@ -43,6 +43,7 @@ const Status = ({ style }) => {
             color: `blueDark`,
             ml: 10,
             textDecoration: `none`,
+            display: [`none`, `block`],
           }}
         >
           ({email})
