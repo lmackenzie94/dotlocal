@@ -1,5 +1,7 @@
 /** @jsx jsx */
+
 import { useState, useEffect, useMemo } from "react"
+import { useState, useEffect, useContext } from "react"
 import { jsx } from "theme-ui"
 import Post from "./post"
 import { motion as M } from "framer-motion"
@@ -7,6 +9,8 @@ import PostFilters from "./post-filters"
 import { Section, Wrapper } from "../system"
 import { useIntersectionObserver } from "@lmack/hooks"
 import Pagination from "./pagination"
+import { UserSavedPostsContext, FirebaseContext } from "./auth/context"
+import { isLoggedIn, getUser, setUser } from "../utils/auth"
 
 let shouldAnimate = true
 
@@ -24,7 +28,31 @@ function PostList({ postData }) {
   const [posts, setPosts] = useState(allPosts)
   const [priceRating, setPriceRating] = useState(null)
   const [categoryFilter, setCategoryFilter] = useState(null)
+  const [userSavedPostsFilter, setUserSavedPostsFilter] = useState(false)
   const [sortBy, setSortBy] = useState(null)
+  const [savedPosts] = useContext(UserSavedPostsContext)
+  const [firebase] = useContext(FirebaseContext)
+
+  const { uid } = getUser()
+
+  const handleSaveClick = (e, postId) => {
+    e.preventDefault()
+    if (!savedPosts.includes(postId)) {
+      firebase
+        .database()
+        .ref(`users/${uid}/savedPosts`)
+        .update({ [postId]: true })
+        .then(() => console.log(`ADDED users/${uid}/savedPosts`))
+    } else {
+      firebase
+        .database()
+        .ref(`users/${uid}/savedPosts/${postId}`)
+        .remove()
+        .then(() => {
+          console.log(`REMOVED users/${uid}/savedPosts/${postId}`)
+        })
+    }
+  }
 
   const indexOfLastPost = currentPage * postsPerPage
   const indexOfFirstPost = indexOfLastPost - postsPerPage
@@ -87,6 +115,40 @@ function PostList({ postData }) {
         default:
           break
       }
+//   let filteredPosts = posts.filter(({ node: post }) => {
+//     if (priceRating && categoryFilter) {
+//       return post.price === priceRating && post.category.name === categoryFilter
+//     } else if (priceRating && !categoryFilter) {
+//       return post.price === priceRating
+//     } else if (categoryFilter && !priceRating) {
+//       return post.category.name === categoryFilter
+//     } else {
+//       return post
+//     }
+//   })
+
+//   if (userSavedPostsFilter) {
+//     filteredPosts = filteredPosts.filter(({ node: post }) => {
+//       return savedPosts.includes(post.id)
+//     })
+//   }
+
+//   if (sortBy) {
+//     switch (sortBy) {
+//       case "highest":
+//         filteredPosts.sort(
+//           (a, b) => parseInt(b.node.price) - parseInt(a.node.price)
+//         )
+//         break
+//       case "lowest":
+//         filteredPosts.sort(
+//           (a, b) => parseInt(a.node.price) - parseInt(b.node.price)
+//         )
+//         break
+//       case "newest":
+//         break
+//       default:
+//         break
     }
     setPosts(filteredPosts)
     setCurrentPage(1)
@@ -119,7 +181,9 @@ function PostList({ postData }) {
           handleChange={handleChange}
           priceRating={priceRating}
           setPriceRating={setPriceRating}
+          setUserSavedPostsFilter={setUserSavedPostsFilter}
           setSortBy={setSortBy}
+          userSavedPostsFilter={userSavedPostsFilter}
         />
         {currentPosts.length > 0 ? (
           <M.ul
@@ -144,12 +208,21 @@ function PostList({ postData }) {
                 variants={itemVariants}
                 sx={{ alignSelf: `end` }}
               >
-                <Post post={post} />
+                <Post
+                  post={post}
+                  liked={savedPosts.includes(post.id)}
+                  handleClick={handleSaveClick}
+                />
               </M.li>
             ))}
           </M.ul>
         ) : (
-          <p sx={{ fontSize: [2, 2, 3], fontWeight: `bold` }}>
+          <p
+            sx={{
+              fontSize: [2, 2, 3],
+              fontWeight: `bold`,
+            }}
+          >
             Nothing yet, but check back later because we're adding more every
             day!
           </p>

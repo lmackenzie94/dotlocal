@@ -2,6 +2,7 @@
 import React from "react"
 import { jsx } from "theme-ui"
 import Image from "gatsby-image"
+import CaptionCallout from "./caption-callout"
 
 const Slide = ({ image, idx, active }) => {
   return (
@@ -10,6 +11,7 @@ const Slide = ({ image, idx, active }) => {
         flex: `1 0 100%`,
         transform: active ? `translateX(-${idx * 100}%)` : null,
         opacity: active ? 1 : 0,
+        position: `relative`,
       }}
     >
       <Image
@@ -18,6 +20,7 @@ const Slide = ({ image, idx, active }) => {
         sx={{ height: `100%`, borderRadius: 4 }}
         imgStyle={{ objectFit: `contain` }}
       />
+      {/* {image.caption && <CaptionCallout text={image.caption} />} */}
     </div>
   )
 }

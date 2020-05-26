@@ -7,6 +7,10 @@ import { graphql } from "gatsby"
 import Hero from "../components/hero"
 import About from "../components/about"
 import Divider from "../components/divider"
+import {
+  FirebaseProvider,
+  UserSavedPostsProvider,
+} from "../components/auth/context"
 
 export const query = graphql`
   {
@@ -58,13 +62,17 @@ export const query = graphql`
 
 const IndexPage = ({ data }) => {
   return (
-    <Layout>
-      <SEO title="Home" />
-      <Hero />
-      <About />
-      <Divider />
-      <PostList postData={data} />
-    </Layout>
+    <FirebaseProvider>
+      <UserSavedPostsProvider>
+        <Layout>
+          <SEO title="Home" />
+          <Hero />
+          <About />
+          <Divider />
+          <PostList postData={data} />
+        </Layout>
+      </UserSavedPostsProvider>
+    </FirebaseProvider>
   )
 }
 

@@ -1,11 +1,11 @@
 # @DOTLOCALTORONTO
 
-**TODO:**
+### TO-DO:
 
 - add a short quiz that returns results
 - add an About page for each contributor (Kevin, Jake)
 - connect to dotlocal instagram?
-- connect to database and add upvotes?
+- add 'sort by most liked' option
+- add popup confirmation modal before logging user out
 - dark mode
 - "New" flag
-- sort price (ex. high -> low)
