@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { graphql } from "gatsby"
 import { Section, Wrapper } from "../system"
-import Image from "gatsby-image"
+// import Image from "gatsby-image"
 import BlockContent from "../components/block-content"
 import Slider from "../components/slider"
 import {

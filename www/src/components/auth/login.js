@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { useState, useContext } from "react"
+import { useState } from "react"
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
 import { setUser, isLoggedIn } from "../../utils/auth"
 import { useFirebase } from "gatsby-plugin-firebase"
 import { navigate } from "@reach/router"
-import { FirebaseContext } from "./context"
+// import { FirebaseContext } from "./context"
 
 const Login = () => {
   // const [firebase, setFirebase] = useContext(FirebaseContext)

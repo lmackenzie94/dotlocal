@@ -1,6 +1,5 @@
 /** @jsx jsx */
 
-import { useState, useEffect, useMemo } from "react"
 import { useState, useEffect, useContext } from "react"
 import { jsx } from "theme-ui"
 import Post from "./post"
@@ -10,7 +9,7 @@ import { Section, Wrapper } from "../system"
 import { useIntersectionObserver } from "@lmack/hooks"
 import Pagination from "./pagination"
 import { UserSavedPostsContext, FirebaseContext } from "./auth/context"
-import { isLoggedIn, getUser, setUser } from "../utils/auth"
+import { getUser } from "../utils/auth"
 
 let shouldAnimate = true
 
@@ -84,7 +83,7 @@ function PostList({ postData }) {
 
   // must be a better way
   useEffect(() => {
-    const filteredPosts = isFiltered
+    let filteredPosts = isFiltered
       ? allPosts.filter(({ node: post }) => {
           if (priceRating && categoryFilter) {
             return (
@@ -98,6 +97,12 @@ function PostList({ postData }) {
           } else return
         })
       : allPosts
+
+    if (userSavedPostsFilter) {
+      filteredPosts = filteredPosts.filter(({ node: post }) => {
+        return savedPosts.includes(post.id)
+      })
+    }
     if (sortBy) {
       switch (sortBy) {
         case "highest":
@@ -115,44 +120,18 @@ function PostList({ postData }) {
         default:
           break
       }
-//   let filteredPosts = posts.filter(({ node: post }) => {
-//     if (priceRating && categoryFilter) {
-//       return post.price === priceRating && post.category.name === categoryFilter
-//     } else if (priceRating && !categoryFilter) {
-//       return post.price === priceRating
-//     } else if (categoryFilter && !priceRating) {
-//       return post.category.name === categoryFilter
-//     } else {
-//       return post
-//     }
-//   })
-
-//   if (userSavedPostsFilter) {
-//     filteredPosts = filteredPosts.filter(({ node: post }) => {
-//       return savedPosts.includes(post.id)
-//     })
-//   }
-
-//   if (sortBy) {
-//     switch (sortBy) {
-//       case "highest":
-//         filteredPosts.sort(
-//           (a, b) => parseInt(b.node.price) - parseInt(a.node.price)
-//         )
-//         break
-//       case "lowest":
-//         filteredPosts.sort(
-//           (a, b) => parseInt(a.node.price) - parseInt(b.node.price)
-//         )
-//         break
-//       case "newest":
-//         break
-//       default:
-//         break
     }
     setPosts(filteredPosts)
     setCurrentPage(1)
-  }, [priceRating, categoryFilter, sortBy])
+  }, [
+    priceRating,
+    categoryFilter,
+    sortBy,
+    allPosts,
+    isFiltered,
+    savedPosts,
+    userSavedPostsFilter,
+  ])
 
   const handleChange = e => {
     if (e.target.value === "All") {

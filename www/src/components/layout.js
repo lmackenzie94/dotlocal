@@ -26,7 +26,7 @@ const Layout = ({ children }) => {
     `
   )
   const [firebase] = useContext(FirebaseContext)
-  const [_, setSavedPosts] = useContext(UserSavedPostsContext)
+  const [, setSavedPosts] = useContext(UserSavedPostsContext)
 
   // move to a global context?
   const { uid } = getUser()
@@ -48,7 +48,7 @@ const Layout = ({ children }) => {
     } else {
       console.log("Firebase undefined fam!")
     }
-  }, [firebase, uid])
+  }, [firebase, uid, setSavedPosts])
 
   return (
     <>

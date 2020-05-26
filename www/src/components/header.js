@@ -1,13 +1,12 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { useState, useEffect, useContext } from "react"
+import { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import { Wrapper } from "../system"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faInstagram } from "@fortawesome/free-brands-svg-icons"
 import Status from "./auth/status"
-import { FirebaseContext } from "./auth/context"
 
 const Header = ({ siteTitle }) => {
   const [isScrolled, setIsScrolled] = useState(false)

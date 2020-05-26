@@ -1,8 +1,7 @@
 /** @jsx jsx */
-import React from "react"
 import { jsx } from "theme-ui"
 import Image from "gatsby-image"
-import CaptionCallout from "./caption-callout"
+// import CaptionCallout from "./caption-callout"
 
 const Slide = ({ image, idx, active }) => {
   return (

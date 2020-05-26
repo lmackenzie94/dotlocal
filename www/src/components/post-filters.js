@@ -1,10 +1,9 @@
 /** @jsx jsx */
-import React, { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { jsx } from "theme-ui"
-import Post from "./post"
 import PriceRating from "./price-rating"
 import { motion as M } from "framer-motion"
-import { getUser, isLoggedIn, logout } from "../utils/auth"
+import { isLoggedIn } from "../utils/auth"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHeart as faHeartFull } from "@fortawesome/free-solid-svg-icons"
 import { faHeart } from "@fortawesome/free-regular-svg-icons"

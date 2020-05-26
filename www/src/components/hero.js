@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Image } from "theme-ui"
+import { jsx } from "theme-ui"
 import { Wrapper, Section } from "../system"
 import { motion as M } from "framer-motion"
 import { useEffect } from "react"
