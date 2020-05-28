@@ -10,6 +10,7 @@ import Divider from "../components/divider"
 import {
   FirebaseProvider,
   UserSavedPostsProvider,
+  UserProvider,
 } from "../components/auth/context"
 
 export const query = graphql`
@@ -63,15 +64,17 @@ export const query = graphql`
 const IndexPage = ({ data }) => {
   return (
     <FirebaseProvider>
-      <UserSavedPostsProvider>
-        <Layout>
-          <SEO title="Home" />
-          <Hero />
-          <About />
-          <Divider />
-          <PostList postData={data} />
-        </Layout>
-      </UserSavedPostsProvider>
+      <UserProvider>
+        <UserSavedPostsProvider>
+          <Layout>
+            <SEO title="Home" />
+            <Hero />
+            <About />
+            <Divider />
+            <PostList postData={data} />
+          </Layout>
+        </UserSavedPostsProvider>
+      </UserProvider>
     </FirebaseProvider>
   )
 }

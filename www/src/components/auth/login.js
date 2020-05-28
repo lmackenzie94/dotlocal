@@ -39,7 +39,7 @@ const Login = () => {
 
   return (
     <div sx={{ p: [3], background: `white`, borderRadius: 4 }}>
-      <p sx={{ textAlign: `center` }}>Please log in:</p>
+      <p sx={{ textAlign: `center` }}>Please log in or sign up below:</p>
       {firebase && (
         <StyledFirebaseAuth
           uiConfig={getUiConfig(firebase.auth)}

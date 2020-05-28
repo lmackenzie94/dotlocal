@@ -30,6 +30,7 @@ const Pagination = ({ postsPerPage, totalPosts, currentPage, paginate }) => {
               borderRadius: 2,
               minWidth: 30,
               mr: 15,
+              padding: [1],
               border: `1px solid`,
               borderColor: `primary`,
               fontWeight: `bold`,

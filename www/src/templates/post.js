@@ -11,6 +11,7 @@ import Slider from "../components/slider"
 import {
   FirebaseProvider,
   UserSavedPostsProvider,
+  UserProvider,
 } from "../components/auth/context"
 
 export const query = graphql`
@@ -79,104 +80,106 @@ const PostPageTemplate = ({ data }) => {
 
   return (
     <FirebaseProvider>
-      <UserSavedPostsProvider>
-        <Layout>
-          <SEO title={title} />
-          <Section sx={{ pt: [`100px`] }}>
-            <Wrapper>
-              <h1
-                sx={{
-                  textAlign: [`center`, `center`, `left`],
-                  mb: [0],
-                }}
-              >
-                {title}
-              </h1>
-              {subText}
-              {locations && (
-                <p
+      <UserProvider>
+        <UserSavedPostsProvider>
+          <Layout>
+            <SEO title={title} />
+            <Section sx={{ pt: [`100px`] }}>
+              <Wrapper>
+                <h1
                   sx={{
-                    m: 0,
-                    mb: [4],
-                    color: `red`,
                     textAlign: [`center`, `center`, `left`],
-                    fontSize: [0, 0, 1],
+                    mb: [0],
                   }}
                 >
-                  {locations.map(l => (
-                    <span key={l}>{l}</span>
-                  ))}
-                </p>
-              )}
-              <div
-                sx={{
-                  display: `flex`,
-                  flexDirection: [`column-reverse`, `column-reverse`, `row`],
-                  justifyContent: `space-between`,
-                  bg: `white`,
-                  p: [3],
-                  mx: [-3],
-                  borderRadius: 4,
-                }}
-              >
-                <div
-                  sx={{
-                    display: `flex`,
-                    flexDirection: `column`,
-                    justifyContent: `center`,
-                    flex: `1 1 auto`,
-                    mr: [0, 0, 50, 60],
-                  }}
-                >
-                  <h2
+                  {title}
+                </h1>
+                {subText}
+                {locations && (
+                  <p
                     sx={{
-                      fontFamily: `heading`,
-                      textTransform: `uppercase`,
-                      borderBottom: `2px solid`,
-                      borderColor: `secondary`,
+                      m: 0,
+                      mb: [4],
+                      color: `red`,
                       textAlign: [`center`, `center`, `left`],
-                      mt: [20, 20, 0],
-                      mb: 0,
+                      fontSize: [0, 0, 1],
                     }}
                   >
-                    {`${author.name}'s Picks:`}
-                  </h2>
-                  {_rawBody && <BlockContent blocks={_rawBody || []} />}
-                  {approxBill && (
-                    <h3
-                      sx={{
-                        variant: `styles.h3`,
-                        width: [`100%`, `100%`, `90%`],
-                        borderColor: `red`,
-                        borderTop: `0.5px dashed`,
-                        borderBottom: `0.5px dashed`,
-                        textAlign: [`center`, `center`, `left`],
-                        m: 0,
-                        py: 15,
-                      }}
-                    >
-                      Approx. Bill:
-                      <span sx={{ color: `secondary`, ml: 10 }}>
-                        {approxBill}
-                      </span>
-                    </h3>
-                  )}
-                </div>
+                    {locations.map(l => (
+                      <span key={l}>{l}</span>
+                    ))}
+                  </p>
+                )}
                 <div
                   sx={{
                     display: `flex`,
-                    flex: `10 1 auto`,
-                    alignItems: `center`,
-                    minWidth: `40%`,
+                    flexDirection: [`column-reverse`, `column-reverse`, `row`],
+                    justifyContent: `space-between`,
+                    bg: `white`,
+                    p: [3],
+                    mx: [-3],
+                    borderRadius: 4,
                   }}
                 >
-                  <Slider slides={images} />
+                  <div
+                    sx={{
+                      display: `flex`,
+                      flexDirection: `column`,
+                      justifyContent: `center`,
+                      flex: `1 1 auto`,
+                      mr: [0, 0, 50, 60],
+                    }}
+                  >
+                    <h2
+                      sx={{
+                        fontFamily: `heading`,
+                        textTransform: `uppercase`,
+                        borderBottom: `2px solid`,
+                        borderColor: `secondary`,
+                        textAlign: [`center`, `center`, `left`],
+                        mt: [20, 20, 0],
+                        mb: 0,
+                      }}
+                    >
+                      {`${author.name}'s Picks:`}
+                    </h2>
+                    {_rawBody && <BlockContent blocks={_rawBody || []} />}
+                    {approxBill && (
+                      <h3
+                        sx={{
+                          variant: `styles.h3`,
+                          width: [`100%`, `100%`, `90%`],
+                          borderColor: `red`,
+                          borderTop: `0.5px dashed`,
+                          borderBottom: `0.5px dashed`,
+                          textAlign: [`center`, `center`, `left`],
+                          m: 0,
+                          py: 15,
+                        }}
+                      >
+                        Approx. Bill:
+                        <span sx={{ color: `secondary`, ml: 10 }}>
+                          {approxBill}
+                        </span>
+                      </h3>
+                    )}
+                  </div>
+                  <div
+                    sx={{
+                      display: `flex`,
+                      flex: `10 1 auto`,
+                      alignItems: `center`,
+                      minWidth: `40%`,
+                    }}
+                  >
+                    <Slider slides={images} />
+                  </div>
                 </div>
-              </div>
-            </Wrapper>
-          </Section>
-        </Layout>
-      </UserSavedPostsProvider>
+              </Wrapper>
+            </Section>
+          </Layout>
+        </UserSavedPostsProvider>
+      </UserProvider>
     </FirebaseProvider>
   )
 }

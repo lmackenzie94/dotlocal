@@ -9,8 +9,11 @@ import { config } from "@fortawesome/fontawesome-svg-core"
 import "normalize.css"
 import Header from "./header"
 import Footer from "./footer"
-import { UserSavedPostsContext, FirebaseContext } from "./auth/context"
-import { getUser } from "../utils/auth"
+import {
+  UserSavedPostsContext,
+  FirebaseContext,
+  UserContext,
+} from "./auth/context"
 
 // needed to avoid icon flash on page load
 config.autoAddCss = false
@@ -27,15 +30,13 @@ const Layout = ({ children }) => {
   )
   const [firebase] = useContext(FirebaseContext)
   const [, setSavedPosts] = useContext(UserSavedPostsContext)
-
-  // move to a global context?
-  const { uid } = getUser()
+  const user = useContext(UserContext)
 
   useEffect(() => {
     if (firebase) {
       firebase
         .database()
-        .ref(`users/${uid}/savedPosts`)
+        .ref(`users/${user.uid}/savedPosts`)
         .on("value", snapshot => {
           if (snapshot.val() !== null) {
             const savedPosts = Object.keys(snapshot.val())
@@ -48,7 +49,7 @@ const Layout = ({ children }) => {
     } else {
       console.log("Firebase undefined fam!")
     }
-  }, [firebase, uid, setSavedPosts])
+  }, [firebase, user, setSavedPosts])
 
   return (
     <>

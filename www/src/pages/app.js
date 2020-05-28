@@ -9,22 +9,25 @@ import { Section, Wrapper } from "../system"
 import {
   FirebaseProvider,
   UserSavedPostsProvider,
+  UserProvider,
 } from "../components/auth/context"
 
 const App = () => (
   <FirebaseProvider>
-    <UserSavedPostsProvider>
-      <Layout>
-        <Section sx={{ pt: `100px` }}>
-          <Wrapper>
-            <Router>
-              <PrivateRoute path="/app/profile" component={Profile} />
-              <Login path="/app/login" />
-            </Router>
-          </Wrapper>
-        </Section>
-      </Layout>
-    </UserSavedPostsProvider>
+    <UserProvider>
+      <UserSavedPostsProvider>
+        <Layout>
+          <Section sx={{ pt: `100px` }}>
+            <Wrapper>
+              <Router>
+                <PrivateRoute path="/app/profile" component={Profile} />
+                <Login path="/app/login" />
+              </Router>
+            </Wrapper>
+          </Section>
+        </Layout>
+      </UserSavedPostsProvider>
+    </UserProvider>
   </FirebaseProvider>
 )
 

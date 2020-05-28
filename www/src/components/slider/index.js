@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import SliderContent from "./slider-content"
 import Slide from "./slide"
 import Arrow from "./arrow"
@@ -10,25 +9,46 @@ import Dots from "./dots"
 const Slider = ({ slides }) => {
   const [activeIdx, setActiveIdx] = useState(0)
 
-  let numOfImages = slides.length
+  const numOfImages = useRef(slides.length)
   useEffect(() => {
-    numOfImages = slides.length
+    numOfImages.current = slides.length
   }, [slides])
 
   const nextSlide = () => {
-    if (activeIdx === numOfImages - 1) {
+    console.log("NEXT")
+    if (activeIdx === numOfImages.current - 1) {
       setActiveIdx(0)
     } else {
       setActiveIdx(prevIdx => prevIdx + 1)
     }
   }
   const prevSlide = () => {
+    console.log("PREV")
     if (activeIdx === 0) {
-      setActiveIdx(numOfImages - 1)
+      setActiveIdx(numOfImages.current - 1)
     } else {
       setActiveIdx(prevIdx => prevIdx - 1)
     }
   }
+
+  useEffect(() => {
+    const handleKeyPress = e => {
+      switch (e.which) {
+        case 37:
+          prevSlide()
+          break
+        case 39:
+          nextSlide()
+          break
+        default:
+          break
+      }
+    }
+    document.addEventListener("keydown", handleKeyPress)
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress)
+    }
+  }, [activeIdx, nextSlide, prevSlide])
 
   return (
     <div sx={SliderStyles}>

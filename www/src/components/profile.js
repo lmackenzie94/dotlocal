@@ -1,9 +1,8 @@
-import React from "react"
-import { getUser } from "../utils/auth"
+import React, { useContext } from "react"
+import { UserContext } from "./auth/context"
 
 const Profile = () => {
-  const user = getUser()
-  const { displayName, email, emailVerified } = user
+  const user = useContext(UserContext)
   const accessToken = user.stsTokenManager.accessToken
 
   return (
@@ -13,19 +12,19 @@ const Profile = () => {
           <div className="text-sm">
             <b>Name</b>:
           </div>
-          <div className="pl-2 ">{`${displayName}`}</div>
+          <div className="pl-2 ">{`${user.displayName}`}</div>
         </li>
         <li>
           <div className="text-sm">
             <b>Email</b>:
           </div>
-          <div className="pl-2 ">{`${email}`}</div>
+          <div className="pl-2 ">{`${user.email}`}</div>
         </li>
         <li>
           <div className="text-sm">
             <b>Email Verified</b>:
           </div>
-          <div className="pl-2 ">{`${emailVerified}`}</div>
+          <div className="pl-2 ">{`${user.emailVerified}`}</div>
         </li>
         <li>
           <div className="text-sm">

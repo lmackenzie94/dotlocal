@@ -1,12 +1,14 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { Link, navigate } from "@reach/router"
 import { getUser, isLoggedIn, logout } from "../../utils/auth"
 import { useFirebase } from "gatsby-plugin-firebase"
+import { UserContext } from "./context"
 
 const Status = ({ style }) => {
   const [firebase, setFirebase] = useState()
+  const user = useContext(UserContext)
 
   useFirebase(fb => {
     setFirebase(fb)
@@ -27,7 +29,6 @@ const Status = ({ style }) => {
       </Link>
     )
   } else {
-    const { email } = getUser()
     details = (
       <div>
         <a
@@ -46,7 +47,7 @@ const Status = ({ style }) => {
             display: [`none`, `inline-block`],
           }}
         >
-          ({email})
+          ({user.email})
         </span>
       </div>
     )

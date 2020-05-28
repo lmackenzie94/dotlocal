@@ -8,8 +8,11 @@ import PostFilters from "./post-filters"
 import { Section, Wrapper } from "../system"
 import { useIntersectionObserver } from "@lmack/hooks"
 import Pagination from "./pagination"
-import { UserSavedPostsContext, FirebaseContext } from "./auth/context"
-import { getUser } from "../utils/auth"
+import {
+  UserSavedPostsContext,
+  FirebaseContext,
+  UserContext,
+} from "./auth/context"
 
 let shouldAnimate = true
 
@@ -23,7 +26,7 @@ function PostList({ postData }) {
   const allPosts = postData.posts.edges
 
   const [currentPage, setCurrentPage] = useState(1)
-  const [postsPerPage] = useState(3)
+  const [postsPerPage] = useState(6)
   const [posts, setPosts] = useState(allPosts)
   const [priceRating, setPriceRating] = useState(null)
   const [categoryFilter, setCategoryFilter] = useState(null)
@@ -31,24 +34,23 @@ function PostList({ postData }) {
   const [sortBy, setSortBy] = useState(null)
   const [savedPosts] = useContext(UserSavedPostsContext)
   const [firebase] = useContext(FirebaseContext)
-
-  const { uid } = getUser()
+  const user = useContext(UserContext)
 
   const handleSaveClick = (e, postId) => {
     e.preventDefault()
     if (!savedPosts.includes(postId)) {
       firebase
         .database()
-        .ref(`users/${uid}/savedPosts`)
+        .ref(`users/${user.uid}/savedPosts`)
         .update({ [postId]: true })
-        .then(() => console.log(`ADDED users/${uid}/savedPosts`))
+        .then(() => console.log(`ADDED users/${user.uid}/savedPosts`))
     } else {
       firebase
         .database()
-        .ref(`users/${uid}/savedPosts/${postId}`)
+        .ref(`users/${user.uid}/savedPosts/${postId}`)
         .remove()
         .then(() => {
-          console.log(`REMOVED users/${uid}/savedPosts/${postId}`)
+          console.log(`REMOVED users/${user.uid}/savedPosts/${postId}`)
         })
     }
   }

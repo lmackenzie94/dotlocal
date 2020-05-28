@@ -35,25 +35,23 @@ export const UserSavedPostsProvider = ({ children }) => {
   )
 }
 
-// export const AuthContext = React.createContext()
+export const UserContext = React.createContext()
 
-// export const AuthProvider = ({ children }) => {
-//   const [currentUser, setCurrentUser] = useState(null)
-//   const [pending, setPending] = useState(true)
+export const UserProvider = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState({})
+  // const [pending, setPending] = useState(true)
 
-//   // if (pending) {
-//   //   return <>Loading...</>
-//   // }
+  // if (pending) {
+  //   return <>Loading...</>
+  // }
 
-//   useEffect(() => {
-//     const user = getUser()
+  useEffect(() => {
+    const user = getUser()
 
-//     setCurrentUser(user)
-//   }, [])
+    setCurrentUser(user)
+  }, [])
 
-//   return (
-//     <AuthContext.Provider value={{ currentUser }}>
-//       {children}
-//     </AuthContext.Provider>
-//   )
-// }
+  return (
+    <UserContext.Provider value={currentUser}>{children}</UserContext.Provider>
+  )
+}
