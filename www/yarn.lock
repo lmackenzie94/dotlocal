@@ -1669,10 +1669,10 @@
   dependencies:
     form-serialize "^0.7.2"
 
-"@lmack/sanity-heroku-preview@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@lmack/sanity-heroku-preview/-/sanity-heroku-preview-1.0.2.tgz#2c09b5121c18fc5256f7148fd71ad1066ecebb7e"
-  integrity sha512-Oihft6bAKIkkznM2GvEwFN5zdYkHzeV2fn6izSVNYDBEu5R/MMeqkKnfKZiQO+jlOFWcwZBx4P3HnSmqDrjplQ==
+"@lmack/sanity-heroku-preview@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@lmack/sanity-heroku-preview/-/sanity-heroku-preview-1.0.3.tgz#b496e5dcd31c078ec57f8039d6f37a52d6e268dd"
+  integrity sha512-TDVlenzR8WUG+wCNL7/aMtNEPszmUL9fck7p9ma/8R1DsUYcfloCDeW6iL7rRIqCdPpHSWf1QigjRDd3pRWpJg==
   dependencies:
     node-cmd "^3.0.0"
     readline-sync "^1.4.10"
