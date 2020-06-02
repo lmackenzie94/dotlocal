@@ -9,5 +9,6 @@ export default {
   fields: [
     { name: 'siteTitle', title: 'Site Title', type: 'string' },
     { name: 'description', title: 'Description', type: 'string' },
+    { name: 'heroImage', title: 'Hero Image ', type: 'image' },
   ],
 };

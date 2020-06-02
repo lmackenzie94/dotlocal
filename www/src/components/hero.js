@@ -3,9 +3,9 @@ import { jsx } from "theme-ui"
 import { Wrapper, Section } from "../system"
 import { motion as M } from "framer-motion"
 import { useEffect } from "react"
-import image from "../images/the6.jpg"
 import smoothScrollTo from "../utils/smoothScrollTo"
 import Logo from "../icons/logo"
+import { useStaticQuery, graphql } from "gatsby"
 
 const basicVariants = {
   visible: { opacity: 1, y: 0 },
@@ -15,6 +15,20 @@ const basicVariants = {
 let shouldAnimate = true
 
 const Hero = () => {
+  const site = useStaticQuery(
+    graphql`
+      query {
+        settings: sanitySettings {
+          heroImage {
+            asset {
+              url
+            }
+          }
+        }
+      }
+    `
+  )
+
   useEffect(() => {
     shouldAnimate = false
   }, [])
@@ -29,7 +43,7 @@ const Hero = () => {
         background: `linear-gradient(
       rgba(0,4,41, 0.9), 
       rgba(0,4,41, 0.9)
-    ), url(${image})`,
+    ), url(${site.settings.heroImage.asset.url})`,
         backgroundSize: `cover`,
         backgroundPosition: `left`,
       }}

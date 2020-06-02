@@ -9,3 +9,4 @@
 - add popup confirmation modal before logging user out
 - dark mode
 - "New" flag
+- Move background image to Sanity
