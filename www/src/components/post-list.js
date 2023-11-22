@@ -187,7 +187,7 @@ function PostList({ postData }) {
               <M.li
                 key={post.id}
                 variants={itemVariants}
-                sx={{ alignSelf: `end` }}
+                sx={{ height: `100%` }}
               >
                 <Post
                   post={post}
