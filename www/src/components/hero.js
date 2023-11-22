@@ -37,7 +37,7 @@ const Hero = () => {
     <Section
       sx={{
         mb: [0],
-        mt: [`100px`],
+        mt: [`65px`],
         width: `100%`,
         py: [5],
         background: `linear-gradient(

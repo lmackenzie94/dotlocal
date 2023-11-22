@@ -32,7 +32,7 @@ const About = () => {
   }, [isVisibleOne, isVisibleTwo])
 
   return (
-    <Section sx={{ background: `white`, my: [3, 3, 4], py: [4] }}>
+    <Section sx={{ background: `white`, my: [0], py: [4] }}>
       <Wrapper>
         <M.div
           ref={refOne}
