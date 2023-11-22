@@ -26,7 +26,6 @@ function Post({ post, liked, handleClick }) {
       to={`/posts/${post.slug.current}`}
       sx={{
         display: `block`,
-        height: `100%`,
         borderRadius: 4,
         p: [2, 2, 3],
         textDecoration: `none`,

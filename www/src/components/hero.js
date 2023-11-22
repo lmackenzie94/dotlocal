@@ -41,8 +41,8 @@ const Hero = () => {
         width: `100%`,
         py: [5],
         background: `linear-gradient(
-      rgba(0,4,41, 0.9), 
-      rgba(0,4,41, 0.9)
+      rgba(0,4,41, 0.8), 
+      rgba(0,4,41, 0.85)
     ), url(${site.settings.heroImage.asset.url})`,
         backgroundSize: `cover`,
         backgroundPosition: `left`,
