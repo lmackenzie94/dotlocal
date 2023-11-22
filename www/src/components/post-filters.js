@@ -34,11 +34,13 @@ function PostFilters({
       initial={"hidden"}
       animate={"visible"}
       sx={{
-        mb: [4],
+        mb: [0],
         bg: `blueDark`,
         color: `white`,
         borderRadius: [0, 4],
-        py: [3],
+        borderBottomRightRadius: [0, 0],
+        borderBottomLeftRadius: [0, 0],
+        py: [2],
         px: [1, 1, 3],
         mx: [-3],
         display: `flex`,
