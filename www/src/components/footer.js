@@ -8,7 +8,7 @@ function Footer() {
   return (
     <footer sx={{ variant: `layout.footer` }}>
       <Wrapper>
-        <p sx={{ m: 0, fontSize: [1, 1, 2] }}>
+        <p sx={{ m: 0, fontSize: [1] }}>
           <a
             href="https://www.instagram.com/dotlocaltoronto/"
             target="_blank"
