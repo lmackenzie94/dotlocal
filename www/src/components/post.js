@@ -32,11 +32,13 @@ function Post({ post, liked, handleClick }) {
         textAlign: `center`,
         color: `text`,
         background: `white`,
-        boxShadow: `0 2px 4px rgba(0,0,0,0.12), 0 2px 3px rgba(0,0,0,0.24);`,
+        boxShadow: `0 0 8px rgb(126 126 126 / 25%)`,
         transition: `0.3s cubic-bezier(.25,.8,.25,1)`,
         transitionProperty: `all`,
-        "&:hover": {
-          boxShadow: `0 6px 20px rgba(0,0,0,0.25), 0 6px 6px rgba(0,0,0,0.22)`,
+        "&:hover, &:focus": {
+          appearance: `none`,
+          outline: `none`,
+          boxShadow: `0 2px 12px rgb(126 126 126 / 35%)`,
         },
       }}
     >
