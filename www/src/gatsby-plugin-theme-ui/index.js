@@ -114,12 +114,12 @@ const theme = {
     sort: {
       ...baseButton,
       borderRadius: 2,
-      fontSize: [3, 3, 4],
+      fontSize: [3],
       fontWeight: `bold`,
       bg: `white`,
       p: [1],
       pl: [2],
-      mx: [2],
+      mx: [1],
     },
     login: {
       ...baseButton,

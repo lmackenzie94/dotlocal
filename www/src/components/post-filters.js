@@ -60,7 +60,7 @@ function PostFilters({
           borderRadius: 0,
           color: `white`,
           pb: `2px`,
-          pr: [3],
+          pr: [5],
           pl: `3px`,
         }}
         onChange={handleChange}
@@ -76,7 +76,7 @@ function PostFilters({
       <div
         sx={{
           display: [`block`, `block`, `block`, `inline-block`],
-          ml: [3, 4],
+          ml: [3],
         }}
       >
         <button
