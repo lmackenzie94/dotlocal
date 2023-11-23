@@ -7,6 +7,7 @@ import { Global } from "@emotion/core"
 import "@fortawesome/fontawesome-svg-core/styles.css"
 import { config } from "@fortawesome/fontawesome-svg-core"
 import "normalize.css"
+import "../styles/global.css"
 import Header from "./header"
 import Footer from "./footer"
 import {
@@ -14,6 +15,7 @@ import {
   FirebaseContext,
   UserContext,
 } from "./auth/context"
+import Helmet from "react-helmet"
 
 // needed to avoid icon flash on page load
 config.autoAddCss = false
@@ -53,6 +55,10 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <Helmet>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      </Helmet>
       <Global
         styles={theme => ({
           // to push footer down on 404 pages

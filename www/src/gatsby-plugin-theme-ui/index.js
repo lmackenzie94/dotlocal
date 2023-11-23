@@ -60,8 +60,9 @@ const theme = {
       fontFamily: "body",
       lineHeight: "body",
       fontWeight: "body",
-      background: `url(${bg})`,
-      backgroundAttachment: `fixed`,
+      // background: `url(${bg})`,
+      background: `aliceblue`,
+      // backgroundAttachment: `fixed`,
     },
     h1: {
       variant: "text.heading",
