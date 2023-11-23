@@ -28,9 +28,6 @@ const Status = ({ style }) => {
         to="/app/login"
         sx={{
           variant: `buttons.login`,
-          textDecoration: `none`,
-          marginTop: `-4px`,
-          display: "inline-block",
         }}
       >
         Log in
@@ -39,24 +36,20 @@ const Status = ({ style }) => {
   } else {
     details = (
       <div>
-        <a
-          href="/"
-          onClick={handleLogout}
-          sx={{ ml: 15, fontFamily: `heading`, color: `red` }}
-        >
-          Log out
-        </a>
         <span
           sx={{
             fontSize: [0],
             color: `blueDark`,
-            ml: 10,
+            mr: 10,
             textDecoration: `none`,
             display: [`none`, `inline-block`],
           }}
         >
           ({user.email})
         </span>
+        <a href="/" onClick={handleLogout} sx={{ variant: `buttons.login` }}>
+          Log out
+        </a>
       </div>
     )
   }

@@ -123,6 +123,9 @@ const theme = {
     },
     login: {
       ...baseButton,
+      textDecoration: `none`,
+      marginTop: `-4px`,
+      display: "inline-block",
       color: `white`,
       bg: `red`,
       borderRadius: 4,
