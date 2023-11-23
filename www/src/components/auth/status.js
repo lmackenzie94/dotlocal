@@ -24,7 +24,15 @@ const Status = ({ style }) => {
   let details
   if (!isLoggedIn()) {
     details = (
-      <Link to="/app/login" sx={{ fontFamily: `heading`, color: `red` }}>
+      <Link
+        to="/app/login"
+        sx={{
+          variant: `buttons.login`,
+          textDecoration: `none`,
+          marginTop: `-4px`,
+          display: "inline-block",
+        }}
+      >
         Log in
       </Link>
     )

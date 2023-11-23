@@ -81,7 +81,12 @@ function PriceRating({
   ))
 
   return (
-    <div {...props} ref={dollarSignContainer} onMouseLeave={handleHoverOff}>
+    <div
+      {...props}
+      ref={dollarSignContainer}
+      onMouseLeave={handleHoverOff}
+      role="group"
+    >
       {dollarSigns}
     </div>
   )

@@ -121,6 +121,16 @@ const theme = {
       pl: [2],
       mx: [2],
     },
+    login: {
+      ...baseButton,
+      color: `white`,
+      bg: `red`,
+      borderRadius: 4,
+      px: [3],
+      py: [1],
+      fontSize: [1],
+      fontWeight: `bold`,
+    },
   },
 }
 

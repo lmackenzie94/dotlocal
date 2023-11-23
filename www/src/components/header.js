@@ -63,7 +63,7 @@ const Header = ({ siteTitle }) => {
           <Status
             style={{
               display: `inline-block`,
-              mr: `20px`,
+              mr: `10px`,
             }}
           />
           <a
